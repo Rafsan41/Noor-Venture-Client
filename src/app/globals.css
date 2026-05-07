@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background:   0 0% 100%;
+    --foreground:   224 71.4% 4.1%;
+    --card:         0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover:      0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary:      35 91% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary:    220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted:        220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent:       220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive:  0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border:       220 13% 91%;
+    --input:        220 13% 91%;
+    --ring:         35 91% 52%;
+    --radius:       0.6rem;
+  }
+
+  .dark {
+    --background:   224 71.4% 4.1%;
+    --foreground:   210 20% 98%;
+    --card:         224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover:      224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary:      35 91% 52%;
+    --primary-foreground: 0 0% 0%;
+    --secondary:    215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted:        215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent:       215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive:  0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border:       215 27.9% 16.9%;
+    --input:        215 27.9% 16.9%;
+    --ring:         35 91% 52%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ── NoorVenture custom ──────────────────────────────────────────────────── */
+.noor-gradient {
+  background: linear-gradient(135deg, #df8a27 0%, #10b981 100%);
+}
+
+.noor-card {
+  @apply rounded-xl border bg-card shadow-sm transition-shadow hover:shadow-md;
+}
+
+.stat-badge {
+  @apply inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full;
+}
+
+.live-dot {
+  @apply relative inline-flex h-2.5 w-2.5;
+}
+
+.live-dot::before {
+  content: "";
+  @apply absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping;
+}
+
+.live-dot::after {
+  content: "";
+  @apply relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar      { width: 6px; height: 6px; }
+::-webkit-scrollbar-track{ background: transparent; }
+::-webkit-scrollbar-thumb{ @apply bg-muted-foreground/30 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/50; }
