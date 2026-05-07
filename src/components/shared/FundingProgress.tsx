@@ -26,9 +26,13 @@ export function FundingProgress({
         <div
           className={cn(
             "h-full rounded-full transition-all duration-500",
-            pct >= 100 ? "bg-emerald-500" : pct >= 75 ? "bg-amber-500" : "bg-amber-400"
+            pct >= 100
+              ? "bg-emerald-500"
+              : pct >= 75
+              ? "bg-coral-500"
+              : "bg-gradient-to-r from-coral-400 to-blush-500"
           )}
-          style={{ width: `${pct}%` }}
+          style={{ width: `${Math.min(pct, 100)}%` }}
         />
       </div>
       {showLabels && (

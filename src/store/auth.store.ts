@@ -1,6 +1,18 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import type { User } from "@/types";
+
+// SSR-safe storage — returns a no-op on the server, real localStorage in browser
+const ssrSafeStorage = createJSONStorage(() => {
+  if (typeof window === "undefined") {
+    return {
+      getItem:    (_key: string) => null,
+      setItem:    (_key: string, _value: string) => {},
+      removeItem: (_key: string) => {},
+    };
+  }
+  return localStorage;
+});
 
 interface AuthState {
   user:      User | null;
@@ -39,6 +51,6 @@ export const useAuthStore = create<AuthState>()(
       isOwner:    () => get().user?.role === "BUSINESS_OWNER",
       isInvestor: () => get().user?.role === "INVESTOR",
     }),
-    { name: "noor-auth", partialize: (s) => ({ user: s.user, token: s.token }) }
+    { name: "noor-auth", storage: ssrSafeStorage, partialize: (s) => ({ user: s.user, token: s.token }) }
   )
 );

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, TrendingUp, Wallet, FileText,
-  Brain, Users, Settings, LogOut, Moon, ChevronRight,
+  Brain, Users, Settings, LogOut, Sparkles, ChevronRight,
   PlusCircle, BarChart3,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -43,10 +43,12 @@ export function Sidebar() {
     <aside className="flex h-screen w-60 flex-col border-r bg-card">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5 border-b">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 text-white">
-          <Moon className="h-4 w-4" />
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg noor-gradient text-white">
+          <Sparkles className="h-4 w-4" />
         </div>
-        <span className="font-bold text-lg">NoorVenture</span>
+        <span className="font-bold text-lg bg-gradient-to-r from-coral-500 to-blush-500 bg-clip-text text-transparent">
+          NoorVenture
+        </span>
       </div>
 
       {/* Nav */}
@@ -60,7 +62,7 @@ export function Sidebar() {
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all group",
                 active
-                  ? "bg-amber-500 text-white"
+                  ? "bg-gradient-to-r from-coral-500 to-blush-500 text-white shadow-sm"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
               )}
             >
@@ -83,7 +85,7 @@ export function Sidebar() {
         </Link>
         <button
           onClick={logout}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-red-50 hover:text-red-600 transition-colors"
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 transition-colors"
         >
           <LogOut className="h-4 w-4" />
           Sign Out
@@ -91,7 +93,7 @@ export function Sidebar() {
 
         {/* User avatar */}
         <div className="flex items-center gap-3 px-3 pt-3 mt-1 border-t">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-700 text-xs font-bold shrink-0">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-coral-400 to-blush-500 text-white text-xs font-bold shrink-0">
             {user?.name?.[0]?.toUpperCase() ?? "?"}
           </div>
           <div className="min-w-0">

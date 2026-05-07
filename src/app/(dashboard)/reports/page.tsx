@@ -13,6 +13,7 @@ import {
 
 import { apiGet, apiPost } from "@/lib/api";
 import { useAuthStore }    from "@/store/auth.store";
+import { DashboardShell }  from "@/components/layout/DashboardShell";
 import { formatCurrency, formatDate, monthName, shortNumber } from "@/utils/format";
 import type { ApiResponse, ProfitReport, Proposal, ReportAnalysis } from "@/types";
 
@@ -89,6 +90,7 @@ export default function ReportsPage() {
   }));
 
   return (
+    <DashboardShell>
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Profit Reports</h1>
@@ -110,7 +112,7 @@ export default function ReportsPage() {
                 <select
                   {...register("proposalId")}
                   onChange={(e) => setSelectedProposal(e.target.value)}
-                  className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+                  className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
                 >
                   <option value="">Select proposal...</option>
                   {proposals.map((p) => (
@@ -125,7 +127,7 @@ export default function ReportsPage() {
                   <label className="text-sm font-medium mb-1.5 block">Month</label>
                   <select
                     {...register("month")}
-                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
                   >
                     {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
                       <option key={m} value={m}>{monthName(m)}</option>
@@ -137,7 +139,7 @@ export default function ReportsPage() {
                   <input
                     {...register("year")}
                     type="number"
-                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
                   />
                 </div>
               </div>
@@ -149,7 +151,7 @@ export default function ReportsPage() {
                     {...register("revenue")}
                     type="number"
                     placeholder="0"
-                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
                   />
                 </div>
                 <div>
@@ -158,7 +160,7 @@ export default function ReportsPage() {
                     {...register("expenses")}
                     type="number"
                     placeholder="0"
-                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
                   />
                 </div>
               </div>
@@ -169,14 +171,14 @@ export default function ReportsPage() {
                   {...register("notes")}
                   rows={2}
                   placeholder="Any context for investors..."
-                  className="w-full rounded-lg border px-3 py-2 text-sm resize-none outline-none focus:ring-2 focus:ring-amber-400"
+                  className="w-full rounded-lg border px-3 py-2 text-sm resize-none outline-none focus:ring-2 focus:ring-coral-400"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={createMutation.isPending}
-                className="w-full rounded-lg bg-amber-500 py-2.5 text-sm font-semibold text-white hover:bg-amber-600 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
+                className="w-full rounded-lg bg-coral-500 py-2.5 text-sm font-semibold text-white hover:bg-coral-600 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
               >
                 {createMutation.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                 Submit & Distribute Profits
@@ -208,7 +210,7 @@ export default function ReportsPage() {
                 <Legend wrapperStyle={{ fontSize: 11 }} />
                 <Bar dataKey="Revenue"  fill="#10b981" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="Expenses" fill="#f87171" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="Profit"   fill="#df8a27" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Profit"   fill="#FF8C69" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
 
@@ -219,7 +221,7 @@ export default function ReportsPage() {
                   <span className="font-semibold text-purple-700 flex items-center gap-1">
                     <Brain className="h-3.5 w-3.5" /> AI Report Analysis
                   </span>
-                  <span className={`font-bold ${analysis.healthScore >= 7 ? "text-emerald-600" : analysis.healthScore >= 5 ? "text-amber-600" : "text-red-600"}`}>
+                  <span className={`font-bold ${analysis.healthScore >= 7 ? "text-emerald-600" : analysis.healthScore >= 5 ? "text-coral-600" : "text-red-600"}`}>
                     Health: {analysis.healthScore}/10
                   </span>
                 </div>
@@ -258,7 +260,7 @@ export default function ReportsPage() {
                   <div className="text-xs text-muted-foreground">Expenses</div>
                 </div>
                 <div>
-                  <div className={`font-semibold ${r.netProfit >= 0 ? "text-amber-600" : "text-red-600"}`}>
+                  <div className={`font-semibold ${r.netProfit >= 0 ? "text-coral-600" : "text-red-600"}`}>
                     {formatCurrency(r.netProfit)}
                   </div>
                   <div className="text-xs text-muted-foreground">Net Profit</div>
@@ -275,5 +277,6 @@ export default function ReportsPage() {
         </div>
       </div>
     </div>
+    </DashboardShell>
   );
 }

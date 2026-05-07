@@ -7,8 +7,9 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
 
-import { apiGet }        from "@/lib/api";
-import { useAuthStore }  from "@/store/auth.store";
+import { apiGet }           from "@/lib/api";
+import { useAuthStore }     from "@/store/auth.store";
+import { DashboardShell }   from "@/components/layout/DashboardShell";
 import { useStatsStore } from "@/store/stats.store";
 import { StatCard }      from "@/components/shared/StatCard";
 import { FundingProgress } from "@/components/shared/FundingProgress";
@@ -30,12 +31,12 @@ export default function DashboardPage() {
 
   const { data: proposalsRes } = useQuery({
     queryKey: ["proposals", "my"],
-    queryFn:  () => apiGet<{ data: Proposal[] }>("/proposals?limit=5"),
+    queryFn:  () => apiGet<{ data: Proposal[]; pagination: { total: number; page: number; limit: number; totalPages: number } }>("/proposals?limit=5"),
   });
 
   const { data: investmentsRes } = useQuery({
-    queryKey: ["investments", "my"],
-    queryFn:  () => apiGet<{ data: Investment[] }>("/investments/my"),
+    queryKey: ["investments", "portfolio"],
+    queryFn:  () => apiGet<ApiResponse<{ investments: Investment[]; summary: { totalInvested: number; totalEarned: number; active: number; total: number } }>>("/investments/portfolio"),
     enabled:  user?.role === "INVESTOR",
   });
 
@@ -45,7 +46,7 @@ export default function DashboardPage() {
   });
 
   const proposals  = proposalsRes?.data ?? [];
-  const investments = investmentsRes?.data ?? [];
+  const investments = investmentsRes?.data?.investments ?? [];
   const wallet     = walletRes?.data;
   const isInvestor = user?.role === "INVESTOR";
   const isOwner    = user?.role === "BUSINESS_OWNER";
@@ -61,6 +62,7 @@ export default function DashboardPage() {
   ];
 
   return (
+    <DashboardShell>
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -79,9 +81,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Live Platform Stats */}
-      <div className="rounded-xl border bg-gradient-to-r from-amber-50 to-emerald-50 p-4">
+      <div className="rounded-xl border bg-gradient-to-r from-cream-100 to-coral-50 p-4">
         <div className="flex items-center gap-2 mb-3">
-          <Zap className="h-4 w-4 text-amber-600" />
+          <Zap className="h-4 w-4 text-coral-600" />
           <span className="text-sm font-semibold">Live Platform Stats</span>
           <span className="text-xs text-muted-foreground ml-auto">Real-time</span>
         </div>
@@ -93,7 +95,7 @@ export default function DashboardPage() {
             { label: "Funded Projects",  value: liveStats?.totalFunded     ?? 0, prefix: "" },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <div className="text-xl font-bold text-amber-700">{s.prefix}{s.value}</div>
+              <div className="text-xl font-bold text-coral-700">{s.prefix}{s.value}</div>
               <div className="text-xs text-muted-foreground">{s.label}</div>
             </div>
           ))}
@@ -106,7 +108,7 @@ export default function DashboardPage() {
           title="Wallet Balance"
           value={formatCurrency(wallet?.balance ?? 0)}
           icon={Wallet}
-          color="amber"
+          color="coral"
           live
         />
         {isInvestor && (
@@ -168,8 +170,8 @@ export default function DashboardPage() {
             <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="profitGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="#df8a27" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#df8a27" stopOpacity={0} />
+                  <stop offset="5%"  stopColor="#FF8C69" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#FF8C69" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="investGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%"  stopColor="#10b981" stopOpacity={0.3} />
@@ -185,7 +187,7 @@ export default function DashboardPage() {
                   name === "profit" ? "Profit" : "Invested",
                 ]}
               />
-              <Area type="monotone" dataKey="profit"   stroke="#df8a27" fill="url(#profitGrad)" strokeWidth={2} />
+              <Area type="monotone" dataKey="profit"   stroke="#FF8C69" fill="url(#profitGrad)" strokeWidth={2} />
               <Area type="monotone" dataKey="invested" stroke="#10b981" fill="url(#investGrad)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
@@ -198,8 +200,8 @@ export default function DashboardPage() {
             {isInvestor && (
               <>
                 <Link href="/proposals" className="flex items-center gap-3 rounded-lg p-3 hover:bg-muted transition-colors">
-                  <div className="h-9 w-9 rounded-lg bg-amber-50 flex items-center justify-center">
-                    <FileText className="h-4 w-4 text-amber-600" />
+                  <div className="h-9 w-9 rounded-lg bg-coral-50 flex items-center justify-center">
+                    <FileText className="h-4 w-4 text-coral-600" />
                   </div>
                   <div>
                     <div className="text-sm font-medium">Browse Proposals</div>
@@ -229,8 +231,8 @@ export default function DashboardPage() {
             {isOwner && (
               <>
                 <Link href="/proposals/create" className="flex items-center gap-3 rounded-lg p-3 hover:bg-muted transition-colors">
-                  <div className="h-9 w-9 rounded-lg bg-amber-50 flex items-center justify-center">
-                    <FileText className="h-4 w-4 text-amber-600" />
+                  <div className="h-9 w-9 rounded-lg bg-coral-50 flex items-center justify-center">
+                    <FileText className="h-4 w-4 text-coral-600" />
                   </div>
                   <div>
                     <div className="text-sm font-medium">New Proposal</div>
@@ -267,7 +269,7 @@ export default function DashboardPage() {
           <h3 className="font-semibold">
             {isInvestor ? "Recent Proposals" : "My Proposals"}
           </h3>
-          <Link href="/proposals" className="text-xs text-amber-600 hover:underline font-medium">
+          <Link href="/proposals" className="text-xs text-coral-600 hover:underline font-medium">
             View all →
           </Link>
         </div>
@@ -286,7 +288,7 @@ export default function DashboardPage() {
                 <FundingProgress raised={p.amountRaised} goal={p.fundingGoal} size="sm" showLabels={false} />
               </div>
               <div className="text-right shrink-0">
-                <div className="text-sm font-semibold text-amber-600">{p.profitSharePercent}%</div>
+                <div className="text-sm font-semibold text-coral-600">{p.profitSharePercent}%</div>
                 <div className="text-xs text-muted-foreground">profit share</div>
               </div>
             </Link>
@@ -294,12 +296,13 @@ export default function DashboardPage() {
           {proposals.length === 0 && (
             <p className="text-center text-sm text-muted-foreground py-6">
               No proposals yet.{" "}
-              {isOwner && <Link href="/proposals/create" className="text-amber-600 hover:underline">Create one!</Link>}
-              {isInvestor && <Link href="/proposals" className="text-amber-600 hover:underline">Browse proposals.</Link>}
+              {isOwner && <Link href="/proposals/create" className="text-coral-600 hover:underline">Create one!</Link>}
+              {isInvestor && <Link href="/proposals" className="text-coral-600 hover:underline">Browse proposals.</Link>}
             </p>
           )}
         </div>
       </div>
     </div>
+    </DashboardShell>
   );
 }

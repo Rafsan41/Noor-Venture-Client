@@ -5,6 +5,7 @@ import Link from "next/link";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
 import { apiGet }       from "@/lib/api";
+import { DashboardShell } from "@/components/layout/DashboardShell";
 import { StatusBadge }  from "@/components/shared/StatusBadge";
 import { formatCurrency, formatDate, formatPercent } from "@/utils/format";
 import type { ApiResponse, Investment } from "@/types";
@@ -12,15 +13,16 @@ import type { ApiResponse, Investment } from "@/types";
 export default function InvestmentsPage() {
   const { data, isLoading } = useQuery({
     queryKey: ["investments", "my"],
-    queryFn:  () => apiGet<ApiResponse<Investment[]>>("/investments/my"),
+    queryFn:  () => apiGet<ApiResponse<{ investments: Investment[]; summary: { totalInvested: number; totalEarned: number; active: number; total: number } }>>("/investments/portfolio"),
   });
 
-  const investments = data?.data ?? [];
-  const totalInvested = investments.reduce((s, i) => s + i.amount,      0);
-  const totalProfit   = investments.reduce((s, i) => s + i.profitEarned, 0);
-  const active        = investments.filter((i) => i.status === "ACTIVE").length;
+  const investments   = data?.data?.investments ?? [];
+  const totalInvested = data?.data?.summary?.totalInvested ?? 0;
+  const totalProfit   = data?.data?.summary?.totalEarned   ?? 0;
+  const active        = data?.data?.summary?.active        ?? 0;
 
   return (
+    <DashboardShell>
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">My Investments</h1>
@@ -44,7 +46,7 @@ export default function InvestmentsPage() {
         </div>
         <div className="noor-card p-5">
           <div className="text-xs text-muted-foreground mb-1">Active Investments</div>
-          <div className="text-2xl font-bold text-amber-600">{active}</div>
+          <div className="text-2xl font-bold text-coral-600">{active}</div>
           <div className="text-xs text-muted-foreground mt-0.5">of {investments.length} total</div>
         </div>
       </div>
@@ -96,7 +98,7 @@ export default function InvestmentsPage() {
               <div className="px-6 py-16 text-center text-muted-foreground">
                 <TrendingUp className="h-12 w-12 mx-auto mb-4 opacity-30" />
                 <p className="font-medium">No investments yet</p>
-                <Link href="/proposals" className="text-sm text-amber-600 hover:underline mt-1 block">
+                <Link href="/proposals" className="text-sm text-coral-600 hover:underline mt-1 block">
                   Browse halal proposals →
                 </Link>
               </div>
@@ -105,5 +107,6 @@ export default function InvestmentsPage() {
         )}
       </div>
     </div>
+    </DashboardShell>
   );
 }

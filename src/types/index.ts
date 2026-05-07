@@ -192,10 +192,9 @@ export interface PaginatedResponse<T = unknown> {
 
 // ── Admin ──────────────────────────────────────────────────────────────────────
 export interface AdminStats {
-  users:            number;
-  proposals:        number;
-  investments:      number;
-  totalCapital:     number;
-  pendingProposals: number;
-  activeProposals:  number;
+  users:        { total: number; investors: number; owners: number };
+  proposals:    { total: number; pending: number; active: number };
+  investments:  { total: number; totalRaised: number; totalProfit: number };
+  recentProposals: Proposal[];
+  monthlyData:  { label: string; proposals: number; investments: number; raised: number }[];
 }

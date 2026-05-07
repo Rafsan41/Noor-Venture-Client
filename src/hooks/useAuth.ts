@@ -3,8 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/auth.store";
 import { apiPost } from "@/lib/api";
-import type { ApiResponse, User } from "@/types";
+import type { User } from "@/types";
 import { toast } from "sonner";
+
+// Better Auth response shape (not wrapped in {success, data})
+interface BetterAuthResponse {
+  redirect: boolean;
+  token: string;
+  user: User;
+}
 
 export function useAuth() {
   const router  = useRouter();
@@ -12,19 +19,22 @@ export function useAuth() {
 
   const login = async (email: string, password: string) => {
     try {
-      const res = await apiPost<ApiResponse<{ token: string; user: User }>>(
+      const res = await apiPost<BetterAuthResponse>(
         "/auth/sign-in/email",
         { email, password }
       );
-      if (res.success && res.data) {
-        store.setToken(res.data.token);
-        store.setUser(res.data.user);
-        toast.success(`Welcome back, ${res.data.user.name}!`);
+      if (res.token && res.user) {
+        store.setToken(res.token);
+        store.setUser(res.user);
+        toast.success(`Welcome back, ${res.user.name}!`);
 
-        const role = res.data.user.role;
-        if (role === "ADMIN")          router.push("/admin");
+        const role = res.user.role;
+        if (role === "ADMIN")               router.push("/admin");
         else if (role === "BUSINESS_OWNER") router.push("/dashboard");
-        else                            router.push("/dashboard");
+        else                                router.push("/dashboard");
+      } else {
+        toast.error("Login failed. Please try again.");
+        throw new Error("Login failed");
       }
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Login failed");
@@ -39,15 +49,18 @@ export function useAuth() {
     role:     "BUSINESS_OWNER" | "INVESTOR";
   }) => {
     try {
-      const res = await apiPost<ApiResponse<{ token: string; user: User }>>(
+      const res = await apiPost<BetterAuthResponse>(
         "/auth/sign-up/email",
         data
       );
-      if (res.success && res.data) {
-        store.setToken(res.data.token);
-        store.setUser(res.data.user);
+      if (res.token && res.user) {
+        store.setToken(res.token);
+        store.setUser(res.user);
         toast.success("Account created! Welcome to NoorVenture.");
         router.push("/dashboard");
+      } else {
+        toast.error("Registration failed. Please try again.");
+        throw new Error("Registration failed");
       }
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Registration failed");

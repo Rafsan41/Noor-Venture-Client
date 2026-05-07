@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 import { apiGet, apiPost } from "@/lib/api";
 import { useAuthStore }    from "@/store/auth.store";
+import { DashboardShell }  from "@/components/layout/DashboardShell";
 import { useProposalSocket } from "@/hooks/useSocket";
 import { StatusBadge }     from "@/components/shared/StatusBadge";
 import { FundingProgress } from "@/components/shared/FundingProgress";
@@ -53,17 +54,20 @@ export default function ProposalDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
-      </div>
+      <DashboardShell>
+        <div className="flex items-center justify-center h-64">
+          <Loader2 className="h-8 w-8 animate-spin text-coral-500" />
+        </div>
+      </DashboardShell>
     );
   }
 
   if (!proposal) {
-    return <div className="text-center py-16 text-muted-foreground">Proposal not found.</div>;
+    return <DashboardShell><div className="text-center py-16 text-muted-foreground">Proposal not found.</div></DashboardShell>;
   }
 
   return (
+    <DashboardShell>
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Header */}
       <div className="noor-card p-6">
@@ -73,7 +77,7 @@ export default function ProposalDetailPage() {
               <StatusBadge status={proposal.status} />
               <StatusBadge status={proposal.riskLevel} />
               {proposal.aiTags?.map((t) => (
-                <span key={t} className="rounded-md bg-amber-50 px-2 py-0.5 text-xs text-amber-700">{t}</span>
+                <span key={t} className="rounded-md bg-coral-50 px-2 py-0.5 text-xs text-coral-700">{t}</span>
               ))}
             </div>
             <h1 className="text-2xl font-bold mb-1">{proposal.title}</h1>
@@ -81,7 +85,7 @@ export default function ProposalDetailPage() {
           </div>
           <div className="flex gap-6 text-center">
             <div>
-              <div className="text-2xl font-bold text-amber-600">{proposal.profitSharePercent}%</div>
+              <div className="text-2xl font-bold text-coral-600">{proposal.profitSharePercent}%</div>
               <div className="text-xs text-muted-foreground">Profit Share</div>
             </div>
             <div>
@@ -108,7 +112,7 @@ export default function ProposalDetailPage() {
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-2.5 text-sm font-medium capitalize transition-colors ${
               activeTab === tab
-                ? "border-b-2 border-amber-500 text-amber-600"
+                ? "border-b-2 border-amber-500 text-coral-600"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -234,12 +238,12 @@ export default function ProposalDetailPage() {
                   {/* Weaknesses */}
                   <div>
                     <h4 className="text-sm font-medium mb-2 flex items-center gap-1.5">
-                      <AlertCircle className="h-4 w-4 text-amber-600" /> Considerations
+                      <AlertCircle className="h-4 w-4 text-coral-600" /> Considerations
                     </h4>
                     <ul className="space-y-1">
                       {analysis.weaknesses.map((w, i) => (
                         <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="text-amber-500 mt-0.5">•</span>{w}
+                          <span className="text-coral-500 mt-0.5">•</span>{w}
                         </li>
                       ))}
                     </ul>
@@ -288,7 +292,7 @@ export default function ProposalDetailPage() {
                   {proposal.investments.map((inv) => (
                     <div key={inv.id} className="flex items-center justify-between p-3 rounded-lg border">
                       <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-amber-100 flex items-center justify-center text-xs font-bold text-amber-700">
+                        <div className="h-8 w-8 rounded-full bg-coral-100 flex items-center justify-center text-xs font-bold text-coral-700">
                           {inv.investor?.name?.[0] ?? "?"}
                         </div>
                         <div>
@@ -315,7 +319,7 @@ export default function ProposalDetailPage() {
           {isInvestor && ["ACTIVE", "FUNDED"].includes(proposal.status) && (
             <div className="noor-card p-5">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-amber-600" /> Invest Now
+                <TrendingUp className="h-4 w-4 text-coral-600" /> Invest Now
               </h3>
               <div className="space-y-3">
                 <div>
@@ -325,11 +329,11 @@ export default function ProposalDetailPage() {
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="e.g. 10000"
-                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
                   />
                 </div>
                 {amount && parseFloat(amount) > 0 && (
-                  <div className="rounded-lg bg-amber-50 p-3 text-xs space-y-1">
+                  <div className="rounded-lg bg-coral-50 p-3 text-xs space-y-1">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Your share</span>
                       <span className="font-medium">
@@ -345,7 +349,7 @@ export default function ProposalDetailPage() {
                 <button
                   onClick={() => investMutation.mutate()}
                   disabled={!amount || parseFloat(amount) <= 0 || investMutation.isPending}
-                  className="w-full rounded-lg bg-amber-500 py-2.5 text-sm font-semibold text-white hover:bg-amber-600 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
+                  className="w-full rounded-lg bg-coral-500 py-2.5 text-sm font-semibold text-white hover:bg-coral-600 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
                 >
                   {investMutation.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                   Invest {amount ? formatCurrency(parseFloat(amount)) : ""}
@@ -370,5 +374,6 @@ export default function ProposalDetailPage() {
         </div>
       </div>
     </div>
+    </DashboardShell>
   );
 }

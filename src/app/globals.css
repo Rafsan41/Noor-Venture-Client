@@ -3,49 +3,51 @@
 @tailwind utilities;
 
 @layer base {
+  /* ── Light mode — cream 50% · coral 30% · blush 10% · purple 10% ─────────── */
   :root {
-    --background:   0 0% 100%;
-    --foreground:   224 71.4% 4.1%;
-    --card:         0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-    --popover:      0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary:      35 91% 52%;
+    --background:         48 60% 97%;   /* warm cream tint */
+    --foreground:         265 30% 12%;  /* deep purple-dark text */
+    --card:               0 0% 100%;    /* pure white cards */
+    --card-foreground:    265 30% 12%;
+    --popover:            0 0% 100%;
+    --popover-foreground: 265 30% 12%;
+    --primary:            14 100% 71%;  /* coral #FF8C69 */
     --primary-foreground: 0 0% 100%;
-    --secondary:    220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted:        220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent:       220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive:  0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border:       220 13% 91%;
-    --input:        220 13% 91%;
-    --ring:         35 91% 52%;
-    --radius:       0.6rem;
+    --secondary:          335 53% 64%;  /* blush pink #D4719A */
+    --secondary-foreground: 0 0% 100%;
+    --muted:              48 40% 94%;   /* cream-tinted muted */
+    --muted-foreground:   220 10% 48%;
+    --accent:             283 39% 53%;  /* purple #9B59B6 */
+    --accent-foreground:  0 0% 100%;
+    --destructive:        0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border:             220 13% 88%;
+    --input:              220 13% 88%;
+    --ring:               14 100% 71%;  /* coral ring */
+    --radius:             0.6rem;
   }
 
+  /* ── Dark mode — deep purple bg, coral primary ────────────────────────────── */
   .dark {
-    --background:   224 71.4% 4.1%;
-    --foreground:   210 20% 98%;
-    --card:         224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover:      224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-    --primary:      35 91% 52%;
-    --primary-foreground: 0 0% 0%;
-    --secondary:    215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted:        215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent:       215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-    --destructive:  0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border:       215 27.9% 16.9%;
-    --input:        215 27.9% 16.9%;
-    --ring:         35 91% 52%;
+    --background:         265 35% 8%;   /* deep purple-dark #100D1A */
+    --foreground:         48  60% 95%;  /* warm cream text */
+    --card:               265 28% 12%;  /* slightly elevated card */
+    --card-foreground:    48  60% 95%;
+    --popover:            265 28% 12%;
+    --popover-foreground: 48  60% 95%;
+    --primary:            14 100% 68%;  /* coral — slightly deeper */
+    --primary-foreground: 0 0% 100%;
+    --secondary:          335 53% 58%;  /* blush — slightly deeper */
+    --secondary-foreground: 0 0% 100%;
+    --muted:              265 22% 18%;
+    --muted-foreground:   265 15% 60%;
+    --accent:             283 45% 58%;  /* brighter purple in dark */
+    --accent-foreground:  0 0% 100%;
+    --destructive:        0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border:             265 22% 20%;
+    --input:              265 22% 20%;
+    --ring:               14 100% 68%;
   }
 }
 
@@ -59,7 +61,7 @@
 
 /* ── NoorVenture custom ──────────────────────────────────────────────────── */
 .noor-gradient {
-  background: linear-gradient(135deg, #df8a27 0%, #10b981 100%);
+  background: linear-gradient(135deg, #FF8C69 0%, #D4719A 60%, #9B59B6 100%);
 }
 
 .noor-card {

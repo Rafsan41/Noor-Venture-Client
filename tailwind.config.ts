@@ -43,19 +43,49 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        noor: {
-          50:  "#fdf8f0",
-          100: "#faefd9",
-          200: "#f5dbb2",
-          300: "#eec27f",
-          400: "#e6a34a",
-          500: "#df8a27",
-          600: "#c5701c",
-          700: "#a45618",
-          800: "#854419",
-          900: "#6c3917",
-          950: "#3c1c0a",
+        // ── Brand palette ─────────────────────────────────────────────────────
+        // 30% — Coral / salmon primary
+        coral: {
+          50:  "#FFF5EE",
+          100: "#FFE4D0",
+          200: "#FFC8A8",
+          300: "#FFA880",
+          400: "#FF9270",
+          500: "#FF8C69",   // ← primary brand
+          600: "#E8673D",
+          700: "#CC4522",
+          800: "#A82E0E",
+          900: "#881C04",
+          950: "#5C0E00",
         },
+        // 10% — Blush / rose secondary
+        blush: {
+          50:  "#FDF2F8",
+          100: "#FAE0EE",
+          200: "#F5C0DC",
+          300: "#EC9AC7",
+          400: "#E07EB5",
+          500: "#D4719A",   // ← secondary accent
+          600: "#BC4E80",
+          700: "#9E3367",
+          800: "#7F1D4F",
+          900: "#63103B",
+          950: "#3D0524",
+        },
+        // 50% neutral — warm cream (used as bg tint)
+        cream: {
+          50:  "#FFFDF7",
+          100: "#FFFAED",
+          200: "#FFF5D6",
+          300: "#FFEEB8",
+          400: "#FFE599",
+          500: "#FFD966",
+          600: "#E8BC33",
+          700: "#CC9A18",
+          800: "#A87A0A",
+          900: "#885E04",
+        },
+        // Keep emerald for financial positive indicators
         emerald: {
           50:  "#ecfdf5",
           100: "#d1fae5",

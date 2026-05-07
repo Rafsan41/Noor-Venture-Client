@@ -6,6 +6,7 @@ import { Wallet, ArrowDownCircle, ArrowUpCircle, RefreshCw, Loader2 } from "luci
 import { toast } from "sonner";
 
 import { apiGet, apiPost } from "@/lib/api";
+import { DashboardShell } from "@/components/layout/DashboardShell";
 import { formatCurrency, formatDateTime } from "@/utils/format";
 import { cn } from "@/lib/utils";
 import type { ApiResponse, Wallet as WalletType, Transaction, TransactionType } from "@/types";
@@ -22,7 +23,7 @@ const TX_COLORS: Record<TransactionType, string> = {
   DEPOSIT:    "text-emerald-600",
   WITHDRAWAL: "text-red-500",
   INVESTMENT: "text-blue-600",
-  PROFIT:     "text-amber-600",
+  PROFIT:     "text-coral-600",
   REFUND:     "text-purple-600",
 };
 
@@ -38,7 +39,7 @@ export default function WalletPage() {
 
   const { data: txRes } = useQuery({
     queryKey: ["wallet", "transactions"],
-    queryFn:  () => apiGet<ApiResponse<Transaction[]>>("/wallet/transactions"),
+    queryFn:  () => apiGet<ApiResponse<{ transactions: Transaction[]; total: number }>>("/wallet/transactions"),
   });
 
   const mutation = useMutation({
@@ -53,9 +54,10 @@ export default function WalletPage() {
   });
 
   const wallet       = walletRes?.data;
-  const transactions = txRes?.data ?? [];
+  const transactions = txRes?.data?.transactions ?? [];
 
   return (
+    <DashboardShell>
     <div className="space-y-6 max-w-3xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold">Noor Wallet</h1>
@@ -63,7 +65,7 @@ export default function WalletPage() {
       </div>
 
       {/* Balance Card */}
-      <div className="rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 p-6 text-white">
+      <div className="rounded-2xl bg-gradient-to-br from-cream-1000 to-coral-600 p-6 text-white">
         <div className="flex items-center gap-3 mb-4">
           <Wallet className="h-6 w-6 opacity-80" />
           <span className="text-sm opacity-80">Available Balance</span>
@@ -108,7 +110,7 @@ export default function WalletPage() {
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount in BDT"
-            className="flex-1 rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+            className="flex-1 rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
           />
           <button
             onClick={() => mutation.mutate()}
@@ -179,5 +181,6 @@ export default function WalletPage() {
         </div>
       </div>
     </div>
+    </DashboardShell>
   );
 }

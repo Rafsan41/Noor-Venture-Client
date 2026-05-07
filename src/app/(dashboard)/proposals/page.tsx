@@ -7,6 +7,7 @@ import { Search, Filter, Brain, TrendingUp } from "lucide-react";
 
 import { apiGet }        from "@/lib/api";
 import { useAuthStore }  from "@/store/auth.store";
+import { DashboardShell } from "@/components/layout/DashboardShell";
 import { StatusBadge }   from "@/components/shared/StatusBadge";
 import { FundingProgress } from "@/components/shared/FundingProgress";
 import { formatCurrency, timeAgo } from "@/utils/format";
@@ -34,6 +35,7 @@ export default function ProposalsPage() {
   const totalPages = data?.pagination?.totalPages ?? 1;
 
   return (
+    <DashboardShell>
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -46,7 +48,7 @@ export default function ProposalsPage() {
         {isOwner && (
           <Link
             href="/proposals/create"
-            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-600 transition-colors"
+            className="rounded-lg bg-coral-500 px-4 py-2 text-sm font-medium text-white hover:bg-coral-600 transition-colors"
           >
             + New Proposal
           </Link>
@@ -61,7 +63,7 @@ export default function ProposalsPage() {
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
             placeholder="Search proposals..."
-            className="w-full rounded-lg border pl-9 pr-4 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+            className="w-full rounded-lg border pl-9 pr-4 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400"
           />
         </div>
         <div className="flex items-center gap-2 overflow-x-auto">
@@ -71,7 +73,7 @@ export default function ProposalsPage() {
               key={s}
               onClick={() => { setStatus(s); setPage(1); }}
               className={`shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                status === s ? "bg-amber-500 text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
+                status === s ? "bg-coral-500 text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
               {s}
@@ -97,7 +99,7 @@ export default function ProposalsPage() {
             <Link key={p.id} href={`/proposals/${p.id}`} className="noor-card p-5 block group">
               <div className="flex items-start justify-between mb-3">
                 <div className="min-w-0">
-                  <h3 className="font-semibold text-sm leading-snug truncate group-hover:text-amber-600 transition-colors">
+                  <h3 className="font-semibold text-sm leading-snug truncate group-hover:text-coral-600 transition-colors">
                     {p.title}
                   </h3>
                   <p className="text-xs text-muted-foreground mt-0.5">{p.businessType}</p>
@@ -125,7 +127,7 @@ export default function ProposalsPage() {
               {p.aiTags?.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1">
                   {p.aiTags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="rounded-md bg-amber-50 px-2 py-0.5 text-xs text-amber-700">
+                    <span key={tag} className="rounded-md bg-coral-50 px-2 py-0.5 text-xs text-coral-700">
                       {tag}
                     </span>
                   ))}
@@ -138,7 +140,7 @@ export default function ProposalsPage() {
               <Brain className="h-12 w-12 mx-auto mb-4 opacity-30" />
               <p className="font-medium">No proposals found</p>
               {isOwner && (
-                <Link href="/proposals/create" className="text-sm text-amber-600 hover:underline mt-1 block">
+                <Link href="/proposals/create" className="text-sm text-coral-600 hover:underline mt-1 block">
                   Create your first proposal →
                 </Link>
               )}
@@ -155,7 +157,7 @@ export default function ProposalsPage() {
               key={p}
               onClick={() => setPage(p)}
               className={`h-8 w-8 rounded-lg text-sm font-medium transition-colors ${
-                page === p ? "bg-amber-500 text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
+                page === p ? "bg-coral-500 text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
               {p}
@@ -164,5 +166,6 @@ export default function ProposalsPage() {
         </div>
       )}
     </div>
+    </DashboardShell>
   );
 }

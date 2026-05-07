@@ -7,26 +7,27 @@ interface StatCardProps {
   subtitle?: string;
   icon:     LucideIcon;
   trend?:   { value: number; label: string };
-  color?:   "amber" | "emerald" | "blue" | "purple";
+  color?:   "coral" | "emerald" | "blue" | "purple" | "blush";
   live?:    boolean;
 }
 
 const colorMap = {
-  amber:   { bg: "bg-amber-50",   icon: "text-amber-600",   border: "border-amber-100" },
-  emerald: { bg: "bg-emerald-50", icon: "text-emerald-600", border: "border-emerald-100" },
-  blue:    { bg: "bg-blue-50",    icon: "text-blue-600",    border: "border-blue-100" },
-  purple:  { bg: "bg-purple-50",  icon: "text-purple-600",  border: "border-purple-100" },
+  coral:   { bg: "bg-coral-50 dark:bg-coral-950/30",   icon: "text-coral-600",   border: "border-coral-100 dark:border-coral-900/40" },
+  blush:   { bg: "bg-blush-50 dark:bg-blush-950/30",   icon: "text-blush-500",   border: "border-blush-100 dark:border-blush-900/40" },
+  emerald: { bg: "bg-emerald-50 dark:bg-emerald-950/30", icon: "text-emerald-600", border: "border-emerald-100 dark:border-emerald-900/40" },
+  blue:    { bg: "bg-blue-50 dark:bg-blue-950/30",     icon: "text-blue-600",    border: "border-blue-100 dark:border-blue-900/40" },
+  purple:  { bg: "bg-purple-50 dark:bg-purple-950/30", icon: "text-purple-600",  border: "border-purple-100 dark:border-purple-900/40" },
 };
 
 export function StatCard({
-  title, value, subtitle, icon: Icon, trend, color = "amber", live,
+  title, value, subtitle, icon: Icon, trend, color = "coral", live,
 }: StatCardProps) {
   const c = colorMap[color];
 
   return (
     <div className="noor-card p-5">
       <div className="flex items-start justify-between mb-3">
-        <div className={cn("rounded-xl p-2.5", c.bg, `border ${c.border}`)}>
+        <div className={cn("rounded-xl p-2.5 border", c.bg, c.border)}>
           <Icon className={cn("h-5 w-5", c.icon)} />
         </div>
         {live && (

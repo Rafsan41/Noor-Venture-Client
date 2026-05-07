@@ -10,6 +10,7 @@ import { Brain, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 import { apiPost } from "@/lib/api";
+import { DashboardShell } from "@/components/layout/DashboardShell";
 import type { ApiResponse, Proposal, GeneratedProposal } from "@/types";
 
 const CATEGORIES = [
@@ -89,9 +90,10 @@ export default function CreateProposalPage() {
     </div>
   );
 
-  const inputCls = "w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400";
+  const inputCls = "w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-coral-400";
 
   return (
+    <DashboardShell>
     <div className="max-w-2xl mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Create Proposal</h1>
@@ -101,7 +103,7 @@ export default function CreateProposalPage() {
       {/* AI Generator */}
       <div className="noor-card p-5">
         <h3 className="font-semibold mb-3 flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-amber-500" /> AI Proposal Generator
+          <Sparkles className="h-4 w-4 text-coral-500" /> AI Proposal Generator
         </h3>
         <p className="text-xs text-muted-foreground mb-3">
           Describe your business and Claude AI will draft title & description for you.
@@ -117,7 +119,7 @@ export default function CreateProposalPage() {
           type="button"
           onClick={generateProposal}
           disabled={generating || !brief.trim()}
-          className="flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-600 disabled:opacity-60 transition-colors"
+          className="flex items-center gap-2 rounded-lg bg-coral-500 px-4 py-2 text-sm font-medium text-white hover:bg-coral-600 disabled:opacity-60 transition-colors"
         >
           {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Brain className="h-4 w-4" />}
           {generating ? "Generating..." : "Generate with AI"}
@@ -195,12 +197,13 @@ export default function CreateProposalPage() {
         <button
           type="submit"
           disabled={createMutation.isPending}
-          className="w-full rounded-lg bg-amber-500 py-2.5 text-sm font-semibold text-white hover:bg-amber-600 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
+          className="w-full rounded-lg bg-coral-500 py-2.5 text-sm font-semibold text-white hover:bg-coral-600 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
         >
           {createMutation.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
           Submit Proposal
         </button>
       </form>
     </div>
+    </DashboardShell>
   );
 }

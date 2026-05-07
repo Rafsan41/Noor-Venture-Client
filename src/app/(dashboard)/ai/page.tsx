@@ -6,6 +6,7 @@ import { Brain, Sparkles, Search, TrendingUp, Loader2, CheckCircle, AlertCircle 
 import { toast } from "sonner";
 
 import { apiPost, apiGet } from "@/lib/api";
+import { DashboardShell } from "@/components/layout/DashboardShell";
 import { formatCurrency, formatPercent } from "@/utils/format";
 import type {
   ApiResponse, Proposal, ProposalAnalysis,
@@ -99,6 +100,7 @@ export default function AIToolsPage() {
   ];
 
   return (
+    <DashboardShell>
     <div className="space-y-6 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold flex items-center gap-2">
@@ -131,7 +133,7 @@ export default function AIToolsPage() {
       {tab === "generate" && (
         <div className="noor-card p-6 space-y-4">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-amber-500" />
+            <Sparkles className="h-5 w-5 text-coral-500" />
             <h3 className="font-semibold">AI Proposal Generator</h3>
           </div>
           <p className="text-sm text-muted-foreground">
@@ -143,23 +145,23 @@ export default function AIToolsPage() {
             onChange={(e) => setBrief(e.target.value)}
             rows={4}
             placeholder="e.g. I want to open an organic halal meat shop in Chittagong. Target customers are middle-class families. I need 3 lakhs to rent a shop and buy initial stock..."
-            className="w-full rounded-lg border px-3 py-2.5 text-sm resize-none outline-none focus:ring-2 focus:ring-amber-400"
+            className="w-full rounded-lg border px-3 py-2.5 text-sm resize-none outline-none focus:ring-2 focus:ring-coral-400"
           />
           <button
             onClick={runGenerate}
             disabled={generating || !brief.trim()}
-            className="flex items-center gap-2 rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-amber-600 disabled:opacity-60 transition-colors"
+            className="flex items-center gap-2 rounded-lg bg-coral-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-coral-600 disabled:opacity-60 transition-colors"
           >
             {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Brain className="h-4 w-4" />}
             {generating ? "Generating..." : "Generate Proposal"}
           </button>
 
           {generated && (
-            <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-5 space-y-3">
+            <div className="rounded-xl border border-coral-200 bg-coral-50/50 p-5 space-y-3">
               <h4 className="font-bold text-lg">{generated.title}</h4>
               <p className="text-sm text-muted-foreground leading-relaxed">{generated.description}</p>
               <div>
-                <span className="text-xs font-semibold text-amber-700">Revenue Model: </span>
+                <span className="text-xs font-semibold text-coral-700">Revenue Model: </span>
                 <span className="text-xs text-muted-foreground">{generated.revenueModel}</span>
               </div>
               <div>
@@ -167,19 +169,19 @@ export default function AIToolsPage() {
                 <ul className="space-y-1">
                   {generated.keyPoints.map((kp, i) => (
                     <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
-                      <span className="text-amber-500 mt-0.5">•</span>{kp}
+                      <span className="text-coral-500 mt-0.5">•</span>{kp}
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="flex flex-wrap gap-1">
                 {generated.tags.map((t) => (
-                  <span key={t} className="rounded-md bg-amber-100 px-2 py-0.5 text-xs text-amber-700">{t}</span>
+                  <span key={t} className="rounded-md bg-coral-100 px-2 py-0.5 text-xs text-coral-700">{t}</span>
                 ))}
               </div>
               <a
                 href="/proposals/create"
-                className="inline-flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-600 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg bg-coral-500 px-4 py-2 text-sm font-medium text-white hover:bg-coral-600 transition-colors"
               >
                 Use This → Create Proposal
               </a>
@@ -252,13 +254,13 @@ export default function AIToolsPage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium mb-2 flex items-center gap-1.5 text-amber-700">
+                  <h4 className="text-sm font-medium mb-2 flex items-center gap-1.5 text-coral-700">
                     <AlertCircle className="h-4 w-4" /> Weaknesses
                   </h4>
                   <ul className="space-y-1.5">
                     {analysis.weaknesses.map((w, i) => (
                       <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
-                        <span className="text-amber-500 mt-0.5">⚠</span>{w}
+                        <span className="text-coral-500 mt-0.5">⚠</span>{w}
                       </li>
                     ))}
                   </ul>
@@ -321,7 +323,7 @@ export default function AIToolsPage() {
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-medium text-sm">{m.name}</span>
-                      <span className={`text-sm font-bold ${m.score >= 7 ? "text-emerald-600" : m.score >= 5 ? "text-amber-600" : "text-red-600"}`}>
+                      <span className={`text-sm font-bold ${m.score >= 7 ? "text-emerald-600" : m.score >= 5 ? "text-coral-600" : "text-red-600"}`}>
                         {m.score}/10 match
                       </span>
                     </div>
@@ -377,7 +379,7 @@ export default function AIToolsPage() {
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                   msg.role === "user"
-                    ? "bg-amber-500 text-white rounded-br-sm"
+                    ? "bg-coral-500 text-white rounded-br-sm"
                     : "bg-muted text-foreground rounded-bl-sm"
                 }`}>
                   {msg.role === "ai" && (
@@ -423,5 +425,6 @@ export default function AIToolsPage() {
         </div>
       )}
     </div>
+    </DashboardShell>
   );
 }
