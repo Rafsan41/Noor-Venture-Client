@@ -66,10 +66,10 @@ export function FinalCTA() {
               Open free account →
             </Link>
             <Link
-              href="/proposals"
+              href="/explore"
               className="inline-flex items-center rounded-full border-2 border-white px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
-              Browse proposals
+              Browse deals
             </Link>
           </div>
 

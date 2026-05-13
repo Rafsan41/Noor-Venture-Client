@@ -12,7 +12,7 @@ function DealCard({ d }: { d: typeof DEALS[number] }) {
   const pct = Math.round((d.raised / d.target) * 100);
   return (
     <Link
-      href={`/proposals`}
+      href={`/explore`}
       className="block overflow-hidden rounded-2xl transition-all duration-200"
       style={{ border: "1.5px solid var(--ink)", background: "var(--surface)" }}
       onMouseEnter={(e) => {
@@ -126,15 +126,15 @@ export function Deals() {
             </h2>
           </div>
           <Link
-            href="/proposals"
+            href="/explore"
             className="inline-flex items-center rounded-full border-2 px-5 py-2.5 text-sm font-bold transition-colors hover:bg-foreground hover:text-background"
             style={{
               borderColor: "var(--ink)",
               color: "var(--ink)",
-              background: "var(--cream)",
+              background: "var(--paper)",
             }}
           >
-            Browse all 38 deals →
+            Browse all deals →
           </Link>
         </div>
 

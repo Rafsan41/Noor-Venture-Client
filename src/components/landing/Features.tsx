@@ -63,9 +63,9 @@ export function Features() {
             </h2>
           </div>
           <Link
-            href="/proposals"
+            href="/explore"
             className="inline-flex items-center gap-2 rounded-full border-2 px-5 py-2.5 text-sm font-bold transition-colors hover:bg-foreground hover:text-background"
-            style={{ borderColor: "var(--ink)", color: "var(--ink)", background: "var(--cream)" }}
+            style={{ borderColor: "var(--ink)", color: "var(--ink)", background: "var(--paper)" }}
           >
             Explore proposals →
           </Link>

@@ -33,6 +33,7 @@ export function FAQ() {
 
   return (
     <section
+      id="faq"
       className="py-28"
       style={{
         background: "var(--paper-2)",

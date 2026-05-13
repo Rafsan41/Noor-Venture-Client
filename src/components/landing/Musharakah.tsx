@@ -63,7 +63,7 @@ function MusharakahDiagram() {
 
 export function Musharakah() {
   return (
-    <section className="py-28" style={{ background: "var(--paper)" }}>
+    <section id="musharakah" className="py-28" style={{ background: "var(--paper)" }}>
       <div className="wrap">
         <div className="grid items-center gap-20 md:grid-cols-2">
           {/* Left */}

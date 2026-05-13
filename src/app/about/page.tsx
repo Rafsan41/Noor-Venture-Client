@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About — NoorVenture",
+  description:
+    "NoorVenture is an ethical peer-to-business investment platform grounded in Islamic finance. No interest, radical transparency, genuine Musharakah partnerships.",
+};
 import { Nav }   from "@/components/landing/Nav";
 import { Footer } from "@/components/landing/Footer";
 import { TilePattern, Star8, Rub } from "@/components/shared/NoorGeometry";
