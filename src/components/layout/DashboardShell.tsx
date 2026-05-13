@@ -27,11 +27,11 @@ export function DashboardShell({
   if (!user) return null;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-muted/30">
+    <div className="flex h-screen overflow-hidden" style={{ background: "var(--paper)" }}>
       <Sidebar />
       <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
         <TopBar title={title} />
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-8 max-w-[1400px]">
           {children}
         </main>
       </div>

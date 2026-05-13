@@ -21,11 +21,11 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   if (!user || user.role !== "ADMIN") return null;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-muted/30">
+    <div className="flex h-screen overflow-hidden" style={{ background: "var(--paper)" }}>
       <Sidebar />
       <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
         <TopBar title="Admin Panel" />
-        <main className="flex-1 overflow-y-auto p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto p-8 max-w-[1400px]">{children}</main>
       </div>
     </div>
   );
