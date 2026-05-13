@@ -1,12 +1,12 @@
 import { format, formatDistanceToNow } from "date-fns";
 
-export const formatCurrency = (amount: number, currency = "BDT") =>
+export const formatCurrency = (amount: number | string, currency = "BDT") =>
   new Intl.NumberFormat("en-BD", {
     style:                 "currency",
     currency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(amount);
+  }).format(Number(amount));
 
 export const formatNumber = (n: number) =>
   new Intl.NumberFormat("en-US").format(n);
@@ -23,13 +23,14 @@ export const formatDateTime = (date: string | Date) =>
 export const timeAgo = (date: string | Date) =>
   formatDistanceToNow(new Date(date), { addSuffix: true });
 
-export const fundingProgress = (raised: number, goal: number) =>
-  Math.min(Math.round((raised / goal) * 100), 100);
+export const fundingProgress = (raised: number | string, goal: number | string) =>
+  Math.min(Math.round((Number(raised) / Number(goal)) * 100), 100);
 
-export const shortNumber = (n: number): string => {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000)     return `${(n / 1_000).toFixed(1)}K`;
-  return String(n);
+export const shortNumber = (n: number | string): string => {
+  const v = Number(n);
+  if (v >= 1_000_000) return `${(v / 1_000_000).toFixed(1)}M`;
+  if (v >= 1_000)     return `${(v / 1_000).toFixed(1)}K`;
+  return String(v);
 };
 
 export const monthName = (month: number) =>

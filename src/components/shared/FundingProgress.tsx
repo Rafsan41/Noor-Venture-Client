@@ -2,8 +2,8 @@ import { fundingProgress, formatCurrency, formatPercent } from "@/utils/format";
 import { cn } from "@/lib/utils";
 
 interface FundingProgressProps {
-  raised: number;
-  goal:   number;
+  raised: number | string;
+  goal:   number | string;
   size?:  "sm" | "md" | "lg";
   showLabels?: boolean;
 }

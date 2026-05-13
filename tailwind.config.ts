@@ -85,6 +85,26 @@ const config: Config = {
           800: "#A87A0A",
           900: "#885E04",
         },
+        // Ink — deep purple-dark (design's --ink)
+        ink: {
+          DEFAULT: "#1A0B2E",
+          soft:    "#3D2456",
+        },
+        // Pink — hot pink accent (design's --pink / --pink-deep)
+        pink: {
+          DEFAULT: "#E85395",
+          deep:    "#C73478",
+        },
+        // Purple brand
+        purple: {
+          DEFAULT: "#A73CCB",
+          deep:    "#7B1FA2",
+        },
+        // Line / border shades
+        line: {
+          DEFAULT: "#E9DDB8",
+          strong:  "#C7B582",
+        },
         // Keep emerald for financial positive indicators
         emerald: {
           50:  "#ecfdf5",
@@ -106,26 +126,59 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans:   ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        serif:  ["var(--font-fraunces)", "Georgia", "serif"],
+        display:["var(--font-fraunces)", "Georgia", "serif"],
       },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          to:   { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          to:   { height: "0" },
         },
         "pulse-noor": {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
+          "50%":       { opacity: "0.5" },
+        },
+        float: {
+          "0%,100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%":      { transform: "translateY(-8px) rotate(2deg)" },
+        },
+        "spin-slow": {
+          to: { transform: "rotate(360deg)" },
+        },
+        rise: {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to:   { opacity: "1", transform: "translateY(0)" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to:   { transform: "translateX(-50%)" },
+        },
+        ping2: {
+          "0%":      { transform: "scale(.5)", opacity: "0.8" },
+          "80%,100%":{ transform: "scale(2.4)", opacity: "0" },
+        },
+        bounce2: {
+          "0%,100%": { transform: "translateY(0)", opacity: "0.4" },
+          "50%":      { transform: "translateY(-4px)", opacity: "1" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-noor": "pulse-noor 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "accordion-up":   "accordion-up 0.2s ease-out",
+        "pulse-noor":     "pulse-noor 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float:            "float 9s ease-in-out infinite",
+        "float-slow":     "float 12s ease-in-out infinite",
+        "spin-slow":      "spin-slow 80s linear infinite",
+        "spin-med":       "spin-slow 40s linear infinite",
+        rise:             "rise 0.7s cubic-bezier(.2,.7,.2,1) both",
+        marquee:          "marquee 50s linear infinite",
+        ping2:            "ping2 1.8s ease-out infinite",
+        bounce2:          "bounce2 1.4s infinite",
       },
     },
   },

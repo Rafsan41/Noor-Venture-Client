@@ -3,51 +3,86 @@
 @tailwind utilities;
 
 @layer base {
-  /* ── Light mode — cream 50% · coral 30% · blush 10% · purple 10% ─────────── */
+  /* ── Light mode ─────────────────────────────────────────────── */
   :root {
-    --background:         48 60% 97%;   /* warm cream tint */
-    --foreground:         265 30% 12%;  /* deep purple-dark text */
-    --card:               0 0% 100%;    /* pure white cards */
+    --background:         48 60% 97%;
+    --foreground:         265 30% 12%;
+    --card:               0 0% 100%;
     --card-foreground:    265 30% 12%;
     --popover:            0 0% 100%;
     --popover-foreground: 265 30% 12%;
-    --primary:            14 100% 71%;  /* coral #FF8C69 */
+    --primary:            14 100% 71%;
     --primary-foreground: 0 0% 100%;
-    --secondary:          335 53% 64%;  /* blush pink #D4719A */
+    --secondary:          335 53% 64%;
     --secondary-foreground: 0 0% 100%;
-    --muted:              48 40% 94%;   /* cream-tinted muted */
+    --muted:              48 40% 94%;
     --muted-foreground:   220 10% 48%;
-    --accent:             283 39% 53%;  /* purple #9B59B6 */
+    --accent:             283 39% 53%;
     --accent-foreground:  0 0% 100%;
     --destructive:        0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border:             220 13% 88%;
     --input:              220 13% 88%;
-    --ring:               14 100% 71%;  /* coral ring */
+    --ring:               14 100% 71%;
     --radius:             0.6rem;
+
+    /* ── NoorVenture brand tokens (matching claude design) ─── */
+    --cream:        #FFF5B5;
+    --cream-soft:   #FFFBE0;
+    --cream-deep:   #FFE585;
+    --coral:        #FF9071;
+    --coral-deep:   #FF6E47;
+    --pink:         #E85395;
+    --pink-deep:    #C73478;
+    --purple:       #A73CCB;
+    --purple-deep:  #7B1FA2;
+    --ink:          #1A0B2E;
+    --ink-soft:     #3D2456;
+    --paper:        #FFFCF0;
+    --paper-2:      #FFF7DA;
+    --line:         #E9DDB8;
+    --line-strong:  #C7B582;
+    --muted-brand:  #6B5B7A;
+    --emerald-c:    #0F9D6B;
+    --emerald-soft: #D4F4E6;
+    --amber:        #F59E0B;
+    --rose:         #E11D48;
+
+    --grad:      linear-gradient(135deg, #FF9071 0%, #E85395 55%, #A73CCB 100%);
+    --grad-warm: linear-gradient(135deg, #FFF5B5 0%, #FF9071 100%);
+    --grad-soft: linear-gradient(180deg, #FFFBE0 0%, #FFF5B5 100%);
   }
 
-  /* ── Dark mode — deep purple bg, coral primary ────────────────────────────── */
+  /* ── Dark mode ──────────────────────────────────────────────── */
   .dark {
-    --background:         265 35% 8%;   /* deep purple-dark #100D1A */
-    --foreground:         48  60% 95%;  /* warm cream text */
-    --card:               265 28% 12%;  /* slightly elevated card */
+    --background:         265 35% 8%;
+    --foreground:         48  60% 95%;
+    --card:               265 28% 12%;
     --card-foreground:    48  60% 95%;
     --popover:            265 28% 12%;
     --popover-foreground: 48  60% 95%;
-    --primary:            14 100% 68%;  /* coral — slightly deeper */
+    --primary:            14 100% 68%;
     --primary-foreground: 0 0% 100%;
-    --secondary:          335 53% 58%;  /* blush — slightly deeper */
+    --secondary:          335 53% 58%;
     --secondary-foreground: 0 0% 100%;
     --muted:              265 22% 18%;
     --muted-foreground:   265 15% 60%;
-    --accent:             283 45% 58%;  /* brighter purple in dark */
+    --accent:             283 45% 58%;
     --accent-foreground:  0 0% 100%;
     --destructive:        0 63% 31%;
     --destructive-foreground: 0 0% 100%;
     --border:             265 22% 20%;
     --input:              265 22% 20%;
     --ring:               14 100% 68%;
+
+    --ink:          #FFF1C4;
+    --ink-soft:     #F4E0B0;
+    --paper:        #150A24;
+    --paper-2:      #1F1230;
+    --line:         #382451;
+    --line-strong:  #4C3068;
+    --muted-brand:  #B59ECF;
+    --emerald-soft: rgba(15,157,107,0.18);
   }
 }
 
@@ -55,39 +90,119 @@
   * { @apply border-border; }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: "ss01", "cv11", "calt", "rlig";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpolygon points='88,50 64.54,56.02 76.87,76.87 56.02,64.54 50,88 43.98,64.54 23.13,76.87 35.46,56.02 12,50 35.46,43.98 23.13,23.13 43.98,35.46 50,12 56.02,35.46 76.87,23.13 64.54,43.98' fill='none' stroke='%23FF8C69' stroke-width='1.5' stroke-opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .dark body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpolygon points='88,50 64.54,56.02 76.87,76.87 56.02,64.54 50,88 43.98,64.54 23.13,76.87 35.46,56.02 12,50 35.46,43.98 23.13,23.13 43.98,35.46 50,12 56.02,35.46 76.87,23.13 64.54,43.98' fill='none' stroke='%239B59B6' stroke-width='1.5' stroke-opacity='0.07'/%3E%3C/svg%3E");
+  }
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
   }
 }
 
-/* ── NoorVenture custom ──────────────────────────────────────────────────── */
-.noor-gradient {
-  background: linear-gradient(135deg, #FF8C69 0%, #D4719A 60%, #9B59B6 100%);
+/* ── NoorVenture custom utilities ───────────────────────────── */
+@layer components {
+
+  .noor-gradient {
+    background: linear-gradient(135deg, #FF9071 0%, #E85395 55%, #A73CCB 100%);
+  }
+
+  .noor-gradient-text {
+    background: linear-gradient(135deg, #FF9071 0%, #E85395 55%, #A73CCB 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .noor-card {
+    @apply rounded-2xl border bg-card shadow-sm transition-all duration-200 hover:shadow-md;
+  }
+
+  /* Brutalist offset shadow card — matching design's 8px 8px 0 0 var(--ink) */
+  .noor-card-lift {
+    @apply rounded-2xl border bg-card transition-all duration-200;
+    border-color: #1A0B2E;
+  }
+  .noor-card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0 0 #1A0B2E;
+  }
+
+  /* Pattern overlay for hero/section backgrounds */
+  .noor-pattern-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpolygon points='88,50 64.54,56.02 76.87,76.87 56.02,64.54 50,88 43.98,64.54 23.13,76.87 35.46,56.02 12,50 35.46,43.98 23.13,23.13 43.98,35.46 50,12 56.02,35.46 76.87,23.13 64.54,43.98' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.12'/%3E%3C/svg%3E");
+  }
+
+  /* Diamond tile pattern (used in cards & sections) */
+  .noor-tile-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='rgba(26,11,46,0.07)' stroke-width='1'%3E%3Cpath d='M28 0 L56 28 L28 56 L0 28 Z'/%3E%3Ccircle cx='28' cy='28' r='14'/%3E%3Cpath d='M28 14 L42 28 L28 42 L14 28 Z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Eyebrow label — small caps label above headings */
+  .eyebrow {
+    @apply text-xs font-semibold tracking-widest uppercase;
+    color: var(--pink-deep);
+  }
+
+  /* Live dot with ping animation */
+  .live-dot {
+    @apply relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500;
+  }
+  .live-dot::before {
+    content: "";
+    @apply absolute inset-0 rounded-full bg-emerald-400 opacity-75;
+    animation: ping2 1.8s ease-out infinite;
+  }
+
+  /* Pill chip */
+  .noor-pill {
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium;
+    background: var(--paper-2);
+    border-color: var(--line);
+    color: var(--ink-soft);
+  }
+
+  /* Badge variants */
+  .badge-pending   { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-amber-100 text-amber-700; }
+  .badge-approved  { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700; }
+  .badge-funded    { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-purple-100 text-purple-700; }
+  .badge-rejected  { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-red-100 text-red-600; }
+  .badge-active    { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-coral-100 text-coral-700; }
+  .badge-completed { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-muted text-foreground; }
+
+  /* Stat badge delta */
+  .delta-up { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700; }
+  .delta-dn { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600; }
+
+  /* Section max-width containers */
+  .wrap       { @apply mx-auto max-w-[1240px] px-7; }
+  .wrap-tight { @apply mx-auto max-w-[1080px] px-7; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar      { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+  ::-webkit-scrollbar-thumb{ @apply rounded-full; background: rgba(107, 91, 122, 0.3); }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(107, 91, 122, 0.5); }
 }
 
-.noor-card {
-  @apply rounded-xl border bg-card shadow-sm transition-shadow hover:shadow-md;
+/* ── Marquee track ───────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee 50s linear infinite;
 }
 
-.stat-badge {
-  @apply inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full;
-}
-
-.live-dot {
-  @apply relative inline-flex h-2.5 w-2.5;
-}
-
-.live-dot::before {
-  content: "";
-  @apply absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping;
-}
-
-.live-dot::after {
-  content: "";
-  @apply relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar      { width: 6px; height: 6px; }
-::-webkit-scrollbar-track{ background: transparent; }
-::-webkit-scrollbar-thumb{ @apply bg-muted-foreground/30 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/50; }
+/* ── Rise animation delays ───────────────────────────────────── */
+.rise-1 { animation-delay: 0.05s; }
+.rise-2 { animation-delay: 0.15s; }
+.rise-3 { animation-delay: 0.25s; }
+.rise-4 { animation-delay: 0.35s; }
+.rise-5 { animation-delay: 0.45s; }

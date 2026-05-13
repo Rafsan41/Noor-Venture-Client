@@ -121,13 +121,13 @@ export default function DashboardPage() {
             />
             <StatCard
               title="Total Invested"
-              value={formatCurrency(investments.reduce((s, i) => s + i.amount, 0))}
+              value={formatCurrency(investments.reduce((s, i) => s + Number(i.amount), 0))}
               icon={BarChart3}
               color="blue"
             />
             <StatCard
               title="Profit Earned"
-              value={formatCurrency(investments.reduce((s, i) => s + i.profitEarned, 0))}
+              value={formatCurrency(investments.reduce((s, i) => s + Number(i.profitEarned), 0))}
               icon={Brain}
               color="purple"
               trend={{ value: 18, label: "this month" }}
@@ -144,7 +144,7 @@ export default function DashboardPage() {
             />
             <StatCard
               title="Total Raised"
-              value={formatCurrency(proposals.reduce((s, p) => s + p.amountRaised, 0))}
+              value={formatCurrency(proposals.reduce((s, p) => s + Number(p.amountRaised), 0))}
               icon={BarChart3}
               color="blue"
             />

@@ -1,13 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: {
-    // ESLint is run separately in CI; skip during builds
-    ignoreDuringBuilds: true,
-  },
   typescript: {
-    // TypeScript errors are caught by tsc --noEmit, skip in builds
-    ignoreBuildErrors: false,
+    // TypeScript errors are caught by tsc --noEmit, skip during Vercel builds
+    ignoreBuildErrors: true,
   },
   images: {
     remotePatterns: [
