@@ -223,9 +223,9 @@ export function Hero() {
               className="mb-8 max-w-xl text-lg leading-relaxed"
               style={{ color: "var(--ink-soft)" }}
             >
-              NoorVenture pairs Muslim investors with vetted halal businesses
+              NoorVenture connects ethical investors with vetted businesses
               through <em>Musharakah</em> — true profit and loss sharing. No
-              interest. No speculation. Just honest partnership.
+              interest. No hidden fees. No speculation. Just honest partnership.
             </p>
 
             <div className="mb-10 flex flex-wrap gap-3">
@@ -268,9 +268,9 @@ export function Hero() {
                 )}
               </div>
               <div className="text-sm leading-snug">
-                <div className="font-semibold">200+ Muslim investors</div>
+                <div className="font-semibold">200+ ethical investors</div>
                 <div style={{ color: "var(--muted-brand)" }}>
-                  already earning halal profits
+                  already earning fair, interest-free returns
                 </div>
               </div>
             </div>

@@ -34,7 +34,7 @@ export function FinalCTA() {
             className="eyebrow mb-4"
             style={{ color: "rgba(255,255,255,0.85)" }}
           >
-            Bismillah
+            Begin your journey
           </div>
           <h2
             className="font-display mx-auto mb-5 font-medium text-white"
@@ -47,14 +47,14 @@ export function FinalCTA() {
           >
             Start growing
             <br />
-            your <span className="italic">halal</span> wealth.
+            your <span className="italic">ethical</span> wealth.
           </h2>
           <p
             className="mx-auto mb-8 max-w-lg text-lg"
             style={{ color: "rgba(255,255,255,0.9)" }}
           >
-            Join 200+ Muslim investors and 38 businesses already building the
-            future of halal finance.
+            Join 200+ investors and 38 businesses already building the future
+            of fair, interest-free finance.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">

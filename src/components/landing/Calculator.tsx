@@ -75,14 +75,14 @@ export function Calculator() {
               className="font-display mb-5 font-medium"
               style={{ fontSize: "clamp(36px,4.5vw,56px)", letterSpacing: "-0.035em" }}
             >
-              See your halal
+              See your fair-share
               <br />
-              <span className="noor-gradient-text italic">compounding.</span>
+              <span className="noor-gradient-text italic">returns.</span>
             </h2>
             <p className="mb-7 text-lg leading-relaxed" style={{ color: "var(--ink-soft)" }}>
-              Adjust your contribution, duration, and the proposal&apos;s expected
-              return. We&apos;ll show you the projected profit share — and your
-              zakat owed.
+              Adjust your contribution, duration, and the proposal&apos;s
+              profit-share rate. We&apos;ll show projected returns — and the
+              optional zakat calculation on your gains.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link

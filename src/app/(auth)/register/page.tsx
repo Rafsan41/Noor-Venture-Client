@@ -169,7 +169,7 @@ function RegisterForm() {
           </div>
           <h3 className="mb-1.5 text-lg font-semibold tracking-tight">I run a business</h3>
           <p className="mb-4 text-xs leading-relaxed" style={{ color: "var(--ink-soft)" }}>
-            Raise interest-free capital from the Ummah via Musharakah. Pay only from profit.
+            Raise interest-free capital from ethical investors via Musharakah. Pay only from profit.
           </p>
           <div className="flex flex-wrap gap-1.5">
             {["AI co-pilot", "5% flat fee", "72h review"].map((t) => (

@@ -26,7 +26,7 @@ const FEATURES = [
   {
     icon: "◈", color: "var(--coral)",
     title: "NoorAI Co-pilot",
-    desc: "Generate proposals, screen deals, get risk assessments — your halal-finance analyst on call.",
+    desc: "Generate proposals, screen deals, get risk assessments — your ethical-finance analyst available around the clock.",
   },
   {
     icon: "☾", color: "var(--pink)",
@@ -55,7 +55,7 @@ export function Features() {
               className="font-display font-medium"
               style={{ fontSize: "clamp(36px,5vw,60px)", letterSpacing: "-0.035em", maxWidth: 720 }}
             >
-              Built for serious halal capital.
+              Built for principled capital.
               <br />
               <span className="noor-gradient-text italic font-normal">
                 Not a fintech toy.

@@ -2,12 +2,30 @@
 import { useState } from "react";
 
 const QS = [
-  { q: "Is this really Shariah-compliant?",           a: "Yes. Every proposal is screened by our AI for riba, gharar, and haram exposure, then independently reviewed by a 3-scholar Shariah board (Mufti Rahman, Sheikh Ibrahim, Dr. Hossain). We publish the audit log for every approved deal." },
-  { q: "What happens if a business loses money?",     a: "You share the loss proportionally — that's what makes Musharakah halal. There is no guaranteed return. We mitigate downside through rigorous AI risk screening, monthly P&L reporting, and a 12-month track-record requirement on businesses." },
-  { q: "How is NoorVenture different from a bank?",   a: "Banks lend at interest regardless of outcome. We pair you directly with businesses as a partner. You earn when they earn. We charge a flat 5% platform fee on profits — never interest." },
-  { q: "What is the minimum investment?",             a: "Most proposals start at ৳5,000. Some marquee deals have a ৳50,000 floor. Wallet top-ups start at ৳1,000." },
-  { q: "How do I withdraw my profits?",               a: "Profits land in your Noor Wallet monthly. Withdraw any time to your linked bank, mobile banking (bKash, Nagad), or crypto wallet. Settlement is T+1." },
-  { q: "Where are you regulated?",                    a: "NoorVenture operates under Bangladesh Bank fintech sandbox approval, with our Shariah governance certified by AAOIFI standards. We hold investor capital in a segregated escrow at City Bank." },
+  {
+    q: "Do I need to be Muslim to use NoorVenture?",
+    a: "Not at all. Our platform is rooted in Islamic finance principles — no interest, no speculation, transparent profit-sharing — but these values are universal. Anyone who wants fair, ethical, and transparent investing is welcome here.",
+  },
+  {
+    q: "What does 'Shariah-compliant' actually mean for my investment?",
+    a: "It means three things: no interest is charged or earned, there is no hidden risk or opaque contracts, and no investment goes into industries that cause social harm (alcohol, gambling, weapons, tobacco). Every proposal is screened by NoorAI and then reviewed by our independent 3-scholar ethics board. We publish the audit log for every approved deal.",
+  },
+  {
+    q: "What happens if a business loses money?",
+    a: "You share the loss proportionally — that is the honest core of Musharakah partnership. There is no guaranteed return. We mitigate downside through AI risk screening, monthly P&L reporting, and a 12-month track-record requirement for every business on the platform.",
+  },
+  {
+    q: "How is NoorVenture different from a bank or P2P lender?",
+    a: "Banks and most P2P lenders charge interest regardless of outcome. We connect you directly with businesses as a co-owner. You earn when they earn. We charge a flat 5% platform fee on profits only — never on your principal, never as interest.",
+  },
+  {
+    q: "What is the minimum investment?",
+    a: "Most proposals start at ৳5,000. Some marquee deals have a ৳50,000 floor. Wallet top-ups start at ৳1,000.",
+  },
+  {
+    q: "How do I withdraw my returns?",
+    a: "Profit shares land in your Noor Wallet each month after the business files its P&L report. Withdraw any time to your linked bank account, mobile banking (bKash, Nagad), or crypto wallet. Settlement is T+1.",
+  },
 ];
 
 export function FAQ() {
@@ -37,8 +55,8 @@ export function FAQ() {
               className="mb-5 text-sm leading-relaxed"
               style={{ color: "var(--ink-soft)" }}
             >
-              Halal finance has been opaque for too long. Ask us anything — we&apos;ll
-              answer like adults, not like a chatbot.
+              Ethical finance shouldn&apos;t be confusing. We answer the real
+              questions — plainly, without jargon, without a script.
             </p>
             <a
               href="mailto:hello@noorventure.com"

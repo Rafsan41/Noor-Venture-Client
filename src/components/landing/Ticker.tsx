@@ -2,14 +2,14 @@
 import { LiveDot } from "@/components/shared/NoorGeometry";
 
 const ITEMS = [
-  { n: "Ahmad R.",  a: "৳50,000",  d: "TechHub Dhaka" },
-  { n: "Fatima A.", a: "৳25,000",  d: "HalalFoods Co." },
-  { n: "Yusuf S.",  a: "৳80,000",  d: "Modest Threads" },
-  { n: "Mariam K.", a: "৳15,000",  d: "Olive Press Co." },
-  { n: "Bilal H.",  a: "৳120,000", d: "Crescent Logistics" },
-  { n: "Aisha M.",  a: "৳35,000",  d: "Souk Marketplace" },
-  { n: "Hamza T.",  a: "৳60,000",  d: "Madinah Tutors" },
-  { n: "Layla F.",  a: "৳20,000",  d: "Hijra Cafe" },
+  { n: "Ahmad R.",   a: "৳50,000",  d: "TechHub Dhaka" },
+  { n: "Priya S.",   a: "৳25,000",  d: "GreenHarvest Foods" },
+  { n: "Yusuf K.",   a: "৳80,000",  d: "Modest Threads" },
+  { n: "Daniel M.",  a: "৳40,000",  d: "Olive Press Co." },
+  { n: "Mariam T.",  a: "৳15,000",  d: "ClearWater Tech" },
+  { n: "Bilal H.",   a: "৳120,000", d: "Crescent Logistics" },
+  { n: "Sara L.",    a: "৳35,000",  d: "Souk Marketplace" },
+  { n: "Rahim C.",   a: "৳60,000",  d: "EduBridge Academy" },
 ];
 
 export function Ticker() {

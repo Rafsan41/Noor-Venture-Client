@@ -2,9 +2,9 @@
 import { Star8, Rub, TilePattern } from "@/components/shared/NoorGeometry";
 
 const PILLARS = [
-  { ar: "لا ربا", en: "No Riba",   color: "var(--coral)",  d: "Zero interest. Profit only when real value is created." },
-  { ar: "لا غرر", en: "No Gharar", color: "var(--pink)",   d: "No excessive uncertainty. Every deal is documented, verified, and transparent." },
-  { ar: "لا حرام", en: "No Haram", color: "var(--purple)", d: "No alcohol, gambling, tobacco, conventional banking, or prohibited industries." },
+  { ar: "لا ربا", en: "No Riba",   color: "var(--coral)",  d: "Zero interest — ever. Your returns come only from real business profit, not from charging people money for time." },
+  { ar: "لا غرر", en: "No Gharar", color: "var(--pink)",   d: "No hidden risk, no opaque contracts. Every deal is fully documented, independently verified, and publicly transparent." },
+  { ar: "لا حرام", en: "No Harm",  color: "var(--purple)", d: "No alcohol, gambling, tobacco, weapons, or exploitative industries. Every proposal is screened for social and ethical impact." },
 ];
 
 const SCHOLARS = ["Mufti A. Rahman", "Sheikh Y. Ibrahim", "Dr. S. Hossain"];
@@ -40,7 +40,7 @@ export function Pillars() {
             className="eyebrow mb-3"
             style={{ color: "var(--paper)", opacity: 0.75 }}
           >
-            The three pillars
+            Our ethical foundation
           </div>
           <h2
             className="font-display mx-auto font-medium"
@@ -51,7 +51,7 @@ export function Pillars() {
               color: "var(--paper)",
             }}
           >
-            Halal isn&apos;t a checkbox.{" "}
+            Ethics isn&apos;t a feature.{" "}
             <span className="noor-gradient-text italic">
               It&apos;s the architecture.
             </span>

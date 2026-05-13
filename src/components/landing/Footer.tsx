@@ -31,8 +31,9 @@ export function Footer() {
               className="mb-5 max-w-[280px] text-sm leading-relaxed"
               style={{ color: "var(--paper)", opacity: 0.7 }}
             >
-              Halal peer-to-business financing. True Musharakah. Zero riba.
-              Built for the Ummah.
+              Ethical peer-to-business financing grounded in Islamic finance.
+              True Musharakah. Zero riba. Built for everyone who believes money
+              should serve people, not exploit them.
             </p>
             <div className="flex gap-2.5">
               {SOCIALS.map((s) => (

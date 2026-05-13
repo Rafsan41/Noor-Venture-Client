@@ -80,11 +80,12 @@ export function Musharakah() {
               className="mb-7 text-lg leading-relaxed"
               style={{ color: "var(--ink-soft)" }}
             >
-              In conventional finance, lenders charge interest no matter what
-              happens to the business.{" "}
-              <strong>Musharakah is the opposite.</strong> You partner with the
-              business. When it profits, you share. When it doesn't, you share
-              that too. That's what makes it halal — and honest.
+              In conventional finance, lenders collect interest regardless of
+              whether the business succeeds or fails.{" "}
+              <strong>Musharakah is different.</strong> You become a genuine
+              partner. When the business profits, you share. When it
+              doesn&apos;t, you share that too. Skin in the game — on both
+              sides. That&apos;s what makes it fair, transparent, and honest.
             </p>
 
             <div className="grid grid-cols-2 gap-3">
