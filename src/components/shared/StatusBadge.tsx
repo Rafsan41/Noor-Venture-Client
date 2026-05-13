@@ -3,30 +3,38 @@ import type { ProposalStatus, RiskLevel, InvestmentStatus } from "@/types";
 
 type Status = ProposalStatus | RiskLevel | InvestmentStatus | string;
 
-const variants: Record<string, string> = {
+const variants: Record<string, { bg: string; color: string; border: string }> = {
   // Proposal statuses
-  DRAFT:      "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
-  PENDING:    "bg-cream-200 text-coral-700 dark:bg-coral-950/40 dark:text-coral-300",
-  APPROVED:   "bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300",
-  REJECTED:   "bg-red-100 text-red-600 dark:bg-red-950/40 dark:text-red-400",
-  ACTIVE:     "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300",
-  FUNDED:     "bg-blush-100 text-blush-700 dark:bg-blush-950/40 dark:text-blush-300",
-  COMPLETED:  "bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300",
-  CANCELLED:  "bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400",
+  DRAFT:      { bg: "#F3F4F6", color: "#6B7280", border: "#E5E7EB" },
+  PENDING:    { bg: "#FFF0EC", color: "#FF5C35", border: "#FFD1C2" },
+  APPROVED:   { bg: "#EFF6FF", color: "#2563EB", border: "#BFDBFE" },
+  REJECTED:   { bg: "#FEF2F2", color: "#DC2626", border: "#FECACA" },
+  ACTIVE:     { bg: "#ECFDF5", color: "#059669", border: "#A7F3D0" },
+  FUNDED:     { bg: "#FDE8F1", color: "#E85395", border: "#F9A8D4" },
+  COMPLETED:  { bg: "#F5EAFB", color: "#A73CCB", border: "#E9D5FF" },
+  CANCELLED:  { bg: "#F3F4F6", color: "#9CA3AF", border: "#E5E7EB" },
   // Risk levels
-  LOW:        "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300",
-  MEDIUM:     "bg-coral-100 text-coral-700 dark:bg-coral-950/40 dark:text-coral-300",
-  HIGH:       "bg-red-100 text-red-600 dark:bg-red-950/40 dark:text-red-400",
+  LOW:        { bg: "#ECFDF5", color: "#059669", border: "#A7F3D0" },
+  MEDIUM:     { bg: "#FFFBEB", color: "#D97706", border: "#FDE68A" },
+  HIGH:       { bg: "#FEF2F2", color: "#DC2626", border: "#FECACA" },
   // Investment
-  SUSPENDED:  "bg-blush-100 text-blush-700 dark:bg-blush-950/40 dark:text-blush-300",
-  WITHDRAWN:  "bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400",
+  SUSPENDED:  { bg: "#FDE8F1", color: "#E85395", border: "#F9A8D4" },
+  WITHDRAWN:  { bg: "#F3F4F6", color: "#9CA3AF", border: "#E5E7EB" },
 };
 
+const fallback = { bg: "#F3F4F6", color: "#6B7280", border: "#E5E7EB" };
+
 export function StatusBadge({ status, className }: { status: Status; className?: string }) {
-  const variant = variants[status] ?? "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400";
+  const v = variants[status] ?? fallback;
   return (
-    <span className={cn("stat-badge font-medium capitalize", variant, className)}>
-      {status.toLowerCase().replace("_", " ")}
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold capitalize border",
+        className
+      )}
+      style={{ background: v.bg, color: v.color, borderColor: v.border }}
+    >
+      {status.toLowerCase().replace(/_/g, " ")}
     </span>
   );
 }
