@@ -75,7 +75,10 @@ export function Nav() {
           <Link
             href="/register"
             className="rounded-full px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ background: "var(--ink)" }}
+            style={{
+              background: "var(--grad)",
+              boxShadow: "0 4px 14px -4px rgba(231,83,149,0.45)",
+            }}
           >
             Open account →
           </Link>

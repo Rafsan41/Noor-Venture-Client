@@ -25,23 +25,24 @@ function HeroCard() {
         }}
       >
         <TilePattern color="rgba(26,11,46,0.06)" />
-        <div className="relative">
+        {/* Force all text dark — card bg is fixed yellow, doesn't flip in dark mode */}
+        <div className="relative" style={{ color: "#1A0B2E" }}>
           {/* Header row */}
           <div className="mb-6 flex items-start justify-between">
             <div>
-              <div className="eyebrow mb-1" style={{ color: "var(--ink)" }}>
+              <div className="eyebrow mb-1" style={{ color: "#5C3D7A" }}>
                 Live capital deployed
               </div>
               <div
-                className="font-display text-5xl font-semibold leading-none tracking-tight"
-                style={{ letterSpacing: "-0.03em" }}
+                className="font-display text-5xl font-semibold leading-none"
+                style={{ letterSpacing: "-0.03em", color: "#1A0B2E" }}
               >
                 ৳{n.toLocaleString()}
               </div>
             </div>
             <div
               className="flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-bold"
-              style={{ background: "var(--ink)", color: "var(--cream)" }}
+              style={{ background: "#1A0B2E", color: "#FFE585" }}
             >
               <LiveDot color="#FFE585" />
               LIVE
@@ -76,10 +77,10 @@ function HeroCard() {
               { l: "Investors", v: "212" },
             ].map((s) => (
               <div key={s.l}>
-                <div className="font-display text-xl font-semibold">{s.v}</div>
+                <div className="font-display text-xl font-semibold" style={{ color: "#1A0B2E" }}>{s.v}</div>
                 <div
                   className="text-xs font-medium"
-                  style={{ color: "var(--ink-soft)" }}
+                  style={{ color: "#5C3D7A" }}
                 >
                   {s.l}
                 </div>
@@ -105,7 +106,9 @@ function HeroCard() {
           🌿
         </div>
         <div>
-          <div className="text-xs font-bold">HalalFoods Co.</div>
+          <div className="text-xs font-bold" style={{ color: "var(--ink)" }}>
+            GreenHarvest Foods
+          </div>
           <div className="text-xs font-semibold" style={{ color: "#0F9D6B" }}>
             + ৳12,400 profit
           </div>
@@ -124,10 +127,10 @@ function HeroCard() {
         }}
       >
         <div
-          className="mb-1 text-xs"
-          style={{ color: "var(--muted-brand)" }}
+          className="mb-1 text-xs font-semibold"
+          style={{ color: "var(--ink-soft)" }}
         >
-          Shariah score
+          Ethics score
         </div>
         <div className="flex items-center gap-2">
           <svg viewBox="0 0 36 36" width="36" height="36">
@@ -152,12 +155,11 @@ function HeroCard() {
             />
           </svg>
           <div>
-            <div className="font-display text-lg font-semibold">94/100</div>
-            <div
-              className="text-xs"
-              style={{ color: "var(--muted-brand)" }}
-            >
-              verified halal
+            <div className="font-display text-lg font-semibold" style={{ color: "var(--ink)" }}>
+              94/100
+            </div>
+            <div className="text-xs font-medium" style={{ color: "var(--ink-soft)" }}>
+              Shariah verified
             </div>
           </div>
         </div>
@@ -204,7 +206,7 @@ export function Hero() {
               >
                 ☾
               </span>
-              Shariah-certified · No riba · No gharar
+              Shariah-certified · No interest · No hidden risk
             </div>
 
             <h1
