@@ -3,9 +3,36 @@ import Link from "next/link";
 import { NoorLogoMark, LiveDot } from "@/components/shared/NoorGeometry";
 
 const COLS = [
-  { t: "Product",   items: ["Explore deals", "Wallet", "NoorAI", "For business", "API"] },
-  { t: "Resources", items: ["How Musharakah works", "Shariah board", "Annual report", "Press kit", "Blog"] },
-  { t: "Legal",     items: ["Terms", "Privacy", "Risk disclosure", "AAOIFI compliance", "Regulatory status"] },
+  {
+    t: "Platform",
+    items: [
+      { l: "Home",         h: "/"         },
+      { l: "Explore deals",h: "/explore"  },
+      { l: "About us",     h: "/about"    },
+      { l: "Contact",      h: "/contact"  },
+      { l: "NoorAI tools", h: "/register" },
+    ],
+  },
+  {
+    t: "Invest",
+    items: [
+      { l: "Open account",     h: "/register?role=INVESTOR"       },
+      { l: "Sign in",          h: "/login"                         },
+      { l: "How it works",     h: "/#how"                          },
+      { l: "Shariah board",    h: "/about#team"                    },
+      { l: "Risk disclosure",  h: "#"                               },
+    ],
+  },
+  {
+    t: "Business",
+    items: [
+      { l: "Raise capital",   h: "/register?role=BUSINESS_OWNER" },
+      { l: "Create proposal", h: "/register"                       },
+      { l: "Musharakah guide",h: "/#musharakah"                    },
+      { l: "5% flat fee",     h: "/about"                          },
+      { l: "Press kit",       h: "#"                                },
+    ],
+  },
 ];
 
 const SOCIALS = ["𝕏", "in", "◉", "f"];
@@ -58,13 +85,14 @@ export function Footer() {
                 {c.t}
               </div>
               {c.items.map((it) => (
-                <div
-                  key={it}
-                  className="mb-2.5 cursor-pointer text-sm transition-opacity hover:opacity-100"
+                <Link
+                  key={it.l}
+                  href={it.h}
+                  className="mb-2.5 block text-sm transition-opacity hover:opacity-100"
                   style={{ color: "var(--paper)", opacity: 0.7 }}
                 >
-                  {it}
-                </div>
+                  {it.l}
+                </Link>
               ))}
             </div>
           ))}
