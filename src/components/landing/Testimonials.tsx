@@ -42,8 +42,8 @@ export function Testimonials() {
               key={t.n}
               className="rounded-2xl border-2 p-8 transition-all duration-300"
               style={{
-                background: i === 1 ? "var(--ink)" : "white",
-                color:      i === 1 ? "var(--cream)" : "var(--ink)",
+                background: i === 1 ? "var(--ink)" : "var(--surface)",
+                color:      i === 1 ? "var(--paper)" : "var(--ink)",
                 borderColor: "var(--ink)",
                 transform:  i === 1 ? "translateY(-12px)" : "none",
                 boxShadow:  i === 1 ? "8px 8px 0 0 var(--pink)" : "none",

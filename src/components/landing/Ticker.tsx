@@ -20,7 +20,7 @@ export function Ticker() {
       style={{
         background: "var(--ink)",
         borderColor: "var(--ink)",
-        color: "var(--cream)",
+        color: "var(--paper)",
       }}
     >
       <div className="marquee-track">
@@ -31,13 +31,13 @@ export function Ticker() {
           >
             <LiveDot color="#10b981" />
             <span className="font-semibold">{it.n}</span>
-            <span style={{ color: "var(--cream-deep)", opacity: 0.8 }}>
+            <span style={{ color: "var(--paper)", opacity: 0.65 }}>
               invested
             </span>
-            <span className="font-bold" style={{ color: "#FFE585" }}>
+            <span className="font-bold noor-gradient-text">
               {it.a}
             </span>
-            <span style={{ color: "var(--cream-deep)", opacity: 0.8 }}>in</span>
+            <span style={{ color: "var(--paper)", opacity: 0.65 }}>in</span>
             <span className="font-medium">{it.d}</span>
             <span
               className="mx-4 text-lg"

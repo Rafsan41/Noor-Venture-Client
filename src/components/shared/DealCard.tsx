@@ -54,7 +54,7 @@ export function DealCard({
       onMouseLeave={() => setHovered(false)}
       className="block rounded-2xl overflow-hidden transition-all duration-150 no-underline"
       style={{
-        background: "white",
+        background: "var(--surface)",
         border: "1.5px solid var(--ink)",
         boxShadow: hovered ? "8px 8px 0 0 var(--ink)" : "3px 3px 0 0 var(--line)",
         transform: hovered ? "translate(-3px, -3px)" : "none",

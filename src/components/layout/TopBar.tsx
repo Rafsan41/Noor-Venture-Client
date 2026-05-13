@@ -46,12 +46,8 @@ export function TopBar({ title }: { title?: string }) {
 
   return (
     <header
-      className="sticky top-0 z-30 flex h-16 items-center justify-between px-8"
-      style={{
-        background: "rgba(255,252,240,0.88)",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid var(--line)",
-      }}
+      className="glass-panel sticky top-0 z-30 flex h-16 items-center justify-between px-8"
+      style={{ borderBottom: "1px solid var(--line)" }}
     >
       {/* Left: title + live pill */}
       <div className="flex items-center gap-4">
@@ -89,7 +85,7 @@ export function TopBar({ title }: { title?: string }) {
             placeholder="Search deals, transactions…"
             className="w-64 rounded-full border py-2 pl-8 pr-4 text-sm outline-none transition-shadow focus:ring-2"
             style={{
-              background: "white",
+              background: "var(--surface)",
               borderColor: "var(--line)",
               fontFamily: "inherit",
             }}

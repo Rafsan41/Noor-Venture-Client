@@ -20,10 +20,8 @@ export function Nav() {
 
   return (
     <nav
-      className="sticky top-0 z-50 transition-all duration-300"
+      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "glass-panel" : ""}`}
       style={{
-        background: scrolled ? "rgba(255,252,240,0.88)" : "transparent",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
       }}
     >

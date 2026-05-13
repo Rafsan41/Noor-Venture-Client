@@ -78,7 +78,7 @@ export function Features() {
               key={f.title}
               className="group relative overflow-hidden rounded-2xl border p-7 transition-all duration-200"
               style={{
-                background: "white",
+                background: "var(--surface)",
                 borderColor: "var(--ink)",
                 borderWidth: "1.5px",
               }}

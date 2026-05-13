@@ -51,6 +51,10 @@
     --grad:      linear-gradient(135deg, #FF9071 0%, #E85395 55%, #A73CCB 100%);
     --grad-warm: linear-gradient(135deg, #FFF5B5 0%, #FF9071 100%);
     --grad-soft: linear-gradient(180deg, #FFFBE0 0%, #FFF5B5 100%);
+
+    /* Surface token — use instead of hardcoded "white" */
+    --surface:   #FFFFFF;
+    --surface-2: #FFF7DA;
   }
 
   /* ── Dark mode ──────────────────────────────────────────────── */
@@ -83,6 +87,11 @@
     --line-strong:  #4C3068;
     --muted-brand:  #B59ECF;
     --emerald-soft: rgba(15,157,107,0.18);
+
+    /* Dark-mode surface overrides */
+    --surface:   hsl(265 28% 12%);   /* ≈ #1E1231 — matches --card */
+    --surface-2: #1F1230;            /* matches --paper-2 */
+    --cream-soft: rgba(255,245,181,0.07);  /* subtle warm tint, not blinding */
   }
 }
 
@@ -121,14 +130,25 @@
     @apply rounded-2xl border bg-card shadow-sm transition-all duration-200 hover:shadow-md;
   }
 
-  /* Brutalist offset shadow card — matching design's 8px 8px 0 0 var(--ink) */
+  /* Brutalist offset shadow card — border/shadow uses var(--ink) so it flips in dark */
   .noor-card-lift {
     @apply rounded-2xl border bg-card transition-all duration-200;
-    border-color: #1A0B2E;
+    border-color: var(--ink);
   }
   .noor-card-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 8px 8px 0 0 #1A0B2E;
+    box-shadow: 8px 8px 0 0 var(--ink);
+  }
+
+  /* Frosted glass — nav bar / top bar background.
+     Light: warm cream blur. Dark: deep purple blur. */
+  .glass-panel {
+    background: rgba(255, 252, 240, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .dark .glass-panel {
+    background: rgba(21, 10, 36, 0.88);
   }
 
   /* Pattern overlay for hero/section backgrounds */

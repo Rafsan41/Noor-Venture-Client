@@ -93,7 +93,7 @@ function HeroCard() {
       <div
         className="animate-float absolute -right-8 -top-5 flex items-center gap-2.5 rounded-2xl px-4 py-3"
         style={{
-          background: "white",
+          background: "var(--surface)",
           border: "1.5px solid var(--ink)",
           boxShadow: "6px 6px 0 0 var(--pink)",
         }}
@@ -116,7 +116,7 @@ function HeroCard() {
       <div
         className="animate-float absolute -bottom-7 -left-8 rounded-2xl px-4 py-3"
         style={{
-          background: "white",
+          background: "var(--surface)",
           border: "1.5px solid var(--ink)",
           boxShadow: "-6px 6px 0 0 var(--purple)",
           animationDuration: "9s",

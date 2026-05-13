@@ -24,7 +24,7 @@ export function NoorPanel({
       onMouseLeave={hoverable ? () => setHovered(false) : undefined}
       className={cn("rounded-2xl transition-all duration-150", padMap[padding], className)}
       style={{
-        background: "white",
+        background: "var(--surface)",
         border: "1.5px solid var(--ink)",
         boxShadow: hoverable && hovered
           ? "6px 6px 0 0 var(--ink)"

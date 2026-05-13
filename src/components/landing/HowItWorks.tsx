@@ -47,7 +47,7 @@ export function HowItWorks() {
                 className="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200"
                 style={{
                   background: tab === t ? "var(--ink)" : "transparent",
-                  color: tab === t ? "var(--cream)" : "var(--ink)",
+                  color: tab === t ? "var(--paper)" : "var(--ink)",
                 }}
               >
                 {t === "investor" ? "For Investors" : "For Businesses"}

@@ -26,9 +26,9 @@ function StepBar({ step }: { step: number }) {
           <div
             className="flex h-8 w-8 items-center justify-center rounded-full border-2 text-sm font-bold transition-all"
             style={{
-              background: n <= step ? "var(--ink)" : "white",
+              background: n <= step ? "var(--ink)" : "var(--surface)",
               borderColor: "var(--ink)",
-              color: n <= step ? "var(--cream)" : "var(--ink)",
+              color: n <= step ? "var(--paper)" : "var(--ink)",
             }}
           >
             {n}
@@ -90,7 +90,7 @@ function RegisterForm() {
           className="relative rounded-2xl border-2 p-5 text-left transition-all duration-200"
           style={{
             borderColor: role === "INVESTOR" ? "var(--ink)" : "var(--line-strong)",
-            background:  role === "INVESTOR" ? "var(--cream-soft)" : "white",
+            background:  role === "INVESTOR" ? "var(--paper-2)" : "var(--surface)",
             boxShadow:   role === "INVESTOR" ? "6px 6px 0 0 var(--ink)" : "none",
             transform:   role === "INVESTOR" ? "translateY(-2px)" : "none",
           }}
@@ -99,7 +99,7 @@ function RegisterForm() {
           <div
             className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-all"
             style={{
-              background:  role === "INVESTOR" ? "var(--ink)" : "white",
+              background:  role === "INVESTOR" ? "var(--ink)" : "var(--surface)",
               borderColor: role === "INVESTOR" ? "var(--ink)" : "var(--line-strong)",
               color: "white",
             }}
@@ -141,7 +141,7 @@ function RegisterForm() {
           className="relative rounded-2xl border-2 p-5 text-left transition-all duration-200"
           style={{
             borderColor: role === "BUSINESS_OWNER" ? "var(--ink)" : "var(--line-strong)",
-            background:  role === "BUSINESS_OWNER" ? "var(--cream-soft)" : "white",
+            background:  role === "BUSINESS_OWNER" ? "var(--paper-2)" : "var(--surface)",
             boxShadow:   role === "BUSINESS_OWNER" ? "6px 6px 0 0 var(--ink)" : "none",
             transform:   role === "BUSINESS_OWNER" ? "translateY(-2px)" : "none",
           }}
@@ -149,7 +149,7 @@ function RegisterForm() {
           <div
             className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-all"
             style={{
-              background:  role === "BUSINESS_OWNER" ? "var(--ink)" : "white",
+              background:  role === "BUSINESS_OWNER" ? "var(--ink)" : "var(--surface)",
               borderColor: role === "BUSINESS_OWNER" ? "var(--ink)" : "var(--line-strong)",
               color: "white",
             }}
@@ -299,7 +299,7 @@ export default function RegisterPage() {
       <div
         className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border-2 p-12"
         style={{
-          background: "white",
+          background: "var(--surface)",
           borderColor: "var(--ink)",
           boxShadow: "12px 12px 0 0 var(--ink)",
         }}

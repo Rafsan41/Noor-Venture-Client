@@ -46,7 +46,7 @@ function Slider({
           className="pointer-events-none absolute top-1 h-5 w-5 rounded-full border-2 shadow-md"
           style={{
             left: `calc(${pct}% - 10px)`,
-            background: "white",
+            background: "var(--surface)",
             borderColor: color,
           }}
         />
@@ -109,7 +109,7 @@ export function Calculator() {
           <div
             className="rounded-3xl border p-9"
             style={{
-              background: "white",
+              background: "var(--surface)",
               borderColor: "var(--ink)",
               borderWidth: "1.5px",
               boxShadow: "12px 12px 0 0 var(--ink)",
@@ -137,7 +137,7 @@ export function Calculator() {
                 color="var(--pink)"
               />
               <Slider
-                label="Expected return rate"
+                label="Profit-share rate (%)"
                 value={rate}
                 setValue={setRate}
                 min={5}
@@ -152,7 +152,7 @@ export function Calculator() {
             <div
               className="mt-8 rounded-2xl border-2 border-dashed p-6"
               style={{
-                background: "var(--cream-soft)",
+                background: "var(--paper-2)",
                 borderColor: "var(--line-strong)",
               }}
             >

@@ -14,7 +14,7 @@ export function Footer() {
   return (
     <footer
       className="pt-16 pb-8"
-      style={{ background: "var(--ink)", color: "var(--cream)" }}
+      style={{ background: "var(--ink)", color: "var(--paper)" }}
     >
       <div className="wrap">
         {/* Top grid */}
@@ -29,7 +29,7 @@ export function Footer() {
             </div>
             <p
               className="mb-5 max-w-[280px] text-sm leading-relaxed"
-              style={{ color: "var(--cream-deep)", opacity: 0.75 }}
+              style={{ color: "var(--paper)", opacity: 0.7 }}
             >
               Halal peer-to-business financing. True Musharakah. Zero riba.
               Built for the Ummah.
@@ -52,7 +52,7 @@ export function Footer() {
             <div key={c.t}>
               <div
                 className="mb-4 text-xs font-bold uppercase tracking-widest"
-                style={{ color: "var(--cream)" }}
+                style={{ color: "var(--paper)" }}
               >
                 {c.t}
               </div>
@@ -60,7 +60,7 @@ export function Footer() {
                 <div
                   key={it}
                   className="mb-2.5 cursor-pointer text-sm transition-opacity hover:opacity-100"
-                  style={{ color: "var(--cream-deep)", opacity: 0.7 }}
+                  style={{ color: "var(--paper)", opacity: 0.7 }}
                 >
                   {it}
                 </div>
@@ -74,7 +74,7 @@ export function Footer() {
           className="flex flex-wrap items-center justify-between gap-4 border-t pb-8 pt-7 text-xs"
           style={{
             borderColor: "rgba(255,245,181,0.15)",
-            color: "var(--cream-deep)",
+            color: "var(--paper)",
             opacity: 0.7,
           }}
         >

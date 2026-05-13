@@ -157,7 +157,7 @@ export default function LoginPage() {
                 disabled={!!demoLoad || loading}
                 className="flex items-center justify-center gap-1 rounded-xl border py-2 text-xs font-bold transition-colors hover:bg-muted disabled:opacity-60"
                 style={{
-                  background: "white",
+                  background: "var(--surface)",
                   borderColor: "var(--line)",
                   color: a.label === "Admin" ? "var(--purple)" : a.label === "Owner" ? "var(--emerald-c)" : "var(--coral)",
                 }}
@@ -169,7 +169,7 @@ export default function LoginPage() {
         </div>
 
         {/* Form card */}
-        <div className="rounded-2xl border p-8" style={{ background: "white", borderColor: "var(--line)" }}>
+        <div className="rounded-2xl border p-8" style={{ background: "var(--surface)", borderColor: "var(--line)" }}>
           <p className="mb-5 text-center text-xs" style={{ color: "var(--muted-brand)" }}>
             Or sign in with your credentials
           </p>

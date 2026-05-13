@@ -52,7 +52,7 @@ export function Sidebar() {
     <aside
       className="flex h-screen w-[248px] shrink-0 flex-col overflow-y-auto"
       style={{
-        background: "white",
+        background: "var(--surface)",
         borderRight: "1.5px solid var(--ink)",
       }}
     >
@@ -92,7 +92,7 @@ export function Sidebar() {
               className={cn(
                 "group relative flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-150",
                 active
-                  ? "text-[var(--cream)]"
+                  ? "text-[var(--paper)]"
                   : "hover:bg-[var(--paper-2)]"
               )}
               style={
@@ -100,7 +100,7 @@ export function Sidebar() {
                   ? {
                       background: "var(--ink)",
                       boxShadow: "4px 4px 0 0 var(--pink)",
-                      color: "var(--cream)",
+                      color: "var(--paper)",
                     }
                   : { color: "var(--ink-soft)" }
               }
@@ -143,7 +143,7 @@ export function Sidebar() {
           className={cn(
             "flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all",
             pathname === "/settings"
-              ? "text-[var(--cream)]"
+              ? "text-[var(--paper)]"
               : "hover:bg-[var(--paper-2)]"
           )}
           style={

@@ -34,7 +34,7 @@ function Panel({
   return (
     <div
       className="rounded-2xl border p-6"
-      style={{ background: "white", borderColor: "var(--ink)", borderWidth: "1.5px" }}
+      style={{ background: "var(--surface)", borderColor: "var(--ink)", borderWidth: "1.5px" }}
     >
       <div className="mb-4 flex items-center justify-between">
         <h3 className="font-display text-xl font-semibold">{title}</h3>
@@ -254,7 +254,7 @@ export default function DashboardPage() {
         <div
           className="grid grid-cols-2 gap-3 rounded-2xl border p-5 sm:grid-cols-4"
           style={{
-            background: "linear-gradient(135deg, #FFF5B5 0%, #FFE585 100%)",
+            background: "var(--paper-2)",
             borderColor: "var(--ink)",
             borderWidth: "1.5px",
           }}
@@ -429,7 +429,7 @@ export default function DashboardPage() {
         {/* ── NoorAI promo banner ───────────────────────────────── */}
         <div
           className="relative flex flex-wrap items-center gap-5 overflow-hidden rounded-2xl border p-6"
-          style={{ background: "var(--ink)", borderColor: "var(--ink)", color: "var(--cream)" }}
+          style={{ background: "var(--ink)", borderColor: "var(--line)", color: "var(--paper)" }}
         >
           {/* Deco */}
           <div className="pointer-events-none absolute right-0 top-0 opacity-[0.14]">
@@ -440,7 +440,7 @@ export default function DashboardPage() {
 
           <div
             className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border-2 text-3xl"
-            style={{ background: "var(--grad)", borderColor: "var(--cream)" }}
+            style={{ background: "var(--grad)", borderColor: "var(--paper)" }}
           >
             ✦
           </div>
@@ -448,7 +448,7 @@ export default function DashboardPage() {
           <div className="flex-1 min-w-[200px]">
             <div
               className="font-display mb-1 text-xl font-semibold"
-              style={{ color: "var(--cream)" }}
+              style={{ color: "var(--paper)" }}
             >
               NoorAI matched 3 new deals to you this week
             </div>
@@ -460,7 +460,7 @@ export default function DashboardPage() {
           <Link
             href="/ai"
             className="inline-flex items-center rounded-full px-5 py-2.5 text-sm font-bold transition-colors hover:opacity-90"
-            style={{ background: "white", color: "var(--ink)" }}
+            style={{ background: "var(--grad)", color: "white" }}
           >
             See matches →
           </Link>

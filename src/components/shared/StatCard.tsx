@@ -37,7 +37,7 @@ export function StatCard({
       onClick={onClick}
       className="rounded-2xl p-5 transition-all duration-150 cursor-default"
       style={{
-        background: "white",
+        background: "var(--surface)",
         border: "1.5px solid var(--ink)",
         boxShadow: hovered ? "6px 6px 0 0 var(--ink)" : "3px 3px 0 0 var(--line)",
         transform: hovered ? "translate(-2px, -2px)" : "none",

@@ -14,7 +14,7 @@ function DealCard({ d }: { d: typeof DEALS[number] }) {
     <Link
       href={`/proposals`}
       className="block overflow-hidden rounded-2xl transition-all duration-200"
-      style={{ border: "1.5px solid var(--ink)", background: "white" }}
+      style={{ border: "1.5px solid var(--ink)", background: "var(--surface)" }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-4px)";
         (e.currentTarget as HTMLAnchorElement).style.boxShadow = "8px 8px 0 0 var(--ink)";

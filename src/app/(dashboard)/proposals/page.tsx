@@ -68,7 +68,7 @@ export default function ProposalsPage() {
         <div
           className="flex flex-col sm:flex-row gap-3 rounded-2xl p-4"
           style={{
-            background: "white",
+            background: "var(--surface)",
             border: "1.5px solid var(--line)",
           }}
         >
@@ -132,7 +132,7 @@ export default function ProposalsPage() {
         ) : proposals.length === 0 ? (
           <div
             className="rounded-2xl"
-            style={{ border: "1.5px solid var(--line)", background: "white" }}
+            style={{ border: "1.5px solid var(--line)", background: "var(--surface)" }}
           >
             <EmptyState
               icon={Brain}

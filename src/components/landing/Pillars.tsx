@@ -14,7 +14,7 @@ export function Pillars() {
     <section
       id="shariah"
       className="relative overflow-hidden py-28"
-      style={{ background: "var(--ink)", color: "var(--cream)" }}
+      style={{ background: "var(--ink)", color: "var(--paper)" }}
     >
       {/* Background geometry */}
       <div className="pointer-events-none absolute inset-0 opacity-10">
@@ -38,7 +38,7 @@ export function Pillars() {
         <div className="mb-16 text-center">
           <div
             className="eyebrow mb-3"
-            style={{ color: "var(--cream-deep)" }}
+            style={{ color: "var(--paper)", opacity: 0.75 }}
           >
             The three pillars
           </div>
@@ -48,7 +48,7 @@ export function Pillars() {
               fontSize: "clamp(40px,5.5vw,68px)",
               letterSpacing: "-0.035em",
               maxWidth: 820,
-              color: "var(--cream)",
+              color: "var(--paper)",
             }}
           >
             Halal isn&apos;t a checkbox.{" "}
@@ -82,13 +82,13 @@ export function Pillars() {
               </div>
               <h3
                 className="mb-3 text-2xl font-semibold"
-                style={{ color: "var(--cream)" }}
+                style={{ color: "var(--paper)" }}
               >
                 {p.en}
               </h3>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "var(--cream-deep)", opacity: 0.85 }}
+                style={{ color: "var(--paper)", opacity: 0.75 }}
               >
                 {p.d}
               </p>
@@ -98,7 +98,7 @@ export function Pillars() {
 
         {/* Scholar board */}
         <div className="mt-14 flex flex-wrap items-center justify-center gap-8">
-          <div className="text-sm" style={{ color: "var(--cream-deep)" }}>
+          <div className="text-sm" style={{ color: "var(--paper)", opacity: 0.72 }}>
             Reviewed by our Shariah Board:
           </div>
           {SCHOLARS.map((name) => (
@@ -106,9 +106,9 @@ export function Pillars() {
               <div
                 className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold"
                 style={{
-                  background: "var(--cream)",
-                  color: "var(--ink)",
-                  border: "1.5px solid var(--ink)",
+                  background: "var(--paper)",
+                  color: "var(--ink-soft)",
+                  border: "1.5px solid var(--paper)",
                 }}
               >
                 {name.split(" ")[1][0]}
